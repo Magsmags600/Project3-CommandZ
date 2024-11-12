@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Resume Builder Generator",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node server/server.js",
     "start:dev": "concurrently \"cd server && npm run watch\" \"wait-on tcp:3001 && cd client && npm run dev\"",
