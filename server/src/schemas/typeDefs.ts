@@ -15,7 +15,7 @@ const typeDefs = `
     _id: ID!
     name: String!
     email: String!
-    education: String!
+    education: [String!]!
     experiences: [String!]!
     projects: [String!]!
     skills: [String!]!
@@ -29,7 +29,7 @@ const typeDefs = `
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth!
-    addResume(name: String!, email: String!, education: String!, experiences: [String!]!, projects: [String!]!, skills: [String!]!, contacts: [String!]!): Resume!
+    addResume(name: String!, email: String!, education: [String!]!, experiences: [String!]!, projects: [String!]!, skills: [String!]!, contacts: [String!]!): Resume!
     updateUser(_id: ID!, username: String, email: String, password: String): User!
     updateResume(_id: ID!, name: String, email: String, education: String, experiences: [String!], projects: [String!], skills: [String!], contacts: [String!]): Resume!
     deleteResume(_id: ID!): Resume!
