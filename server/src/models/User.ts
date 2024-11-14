@@ -1,14 +1,15 @@
 import { Schema, model, Document } from 'mongoose';
 import bcrypt from 'bcrypt';
-
+import Education from './Education.js';
+import Projects from './Projects.js';
 //interface for the Resume document
 interface IResume extends Document {
   _id: string;
   name: string;
   email: string;
-  education: string;
+  education: typeof Education[];
   experiences: string[];
-  projects: string[];
+  projects: typeof Projects[];
   skills: string[];
   contacts: string[];
 
@@ -47,23 +48,8 @@ const resumeSchema = new Schema<IResume>(
         trim: true,
       },
     ],
-    education: [
-      {
-        institution: String,
-        degree: String,
-        fieldOfStudy: String,
-        startDate: Date,
-        endDate: Date,
-      }
-    ],
-    projects: [
-      {
-        title: String,
-        description: String,
-        startDate: Date,
-        endDate: Date,
-      }
-    ],
+    education: [Education],
+    projects: [Projects],
     contacts: [
       {
         type: String,
@@ -134,4 +120,4 @@ userSchema.methods.isCorrectPassword = async function (password: string): Promis
 const Resume = model<IResume>('Resume', resumeSchema);
 const User = model<IUser>('User', userSchema);
 
-export { Resume, User };
+export { Resume, User, IResume };

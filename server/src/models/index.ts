@@ -1,3 +1,4 @@
 import  {User, Resume} from './User.js';
-
-export { User, Resume };
+import Education from './Education.js';
+import Projects from './Projects.js';
+export { User, Resume, Education, Projects };

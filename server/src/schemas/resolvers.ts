@@ -1,4 +1,4 @@
-import { User, Resume } from '../models/index.js';
+import { User, Resume, Education, Projects } from '../models/index.js';
 import { signToken, AuthenticationError } from '../utils/auth.js';
 
 interface User {
@@ -12,9 +12,9 @@ interface Resume {
   _id: string;
   name: string;
   email: string;
-  education: string;
+  education: typeof Education[];
   experiences: string[];
-  projects: string[];
+  projects: typeof Projects[];
   skills: string[];
   contacts: string[];
 }
@@ -28,7 +28,7 @@ interface AddUserArgs {
 interface AddResumeArgs {
   name: string;
   email: string;
-  education: string;
+  education: string[];
   experiences: string[];
   projects: string[];
   skills: string[];
