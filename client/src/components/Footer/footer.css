@@ -1,17 +1,21 @@
-.footer-bar {
-    width: 100%;
-    position: relative;
+/* footer.css */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #219ebc; /* Or your preferred background color */
+    color: #ffffff;
   }
   
-  .footer-links {
-    text-align: right;
+  .footer-left {
+    display: flex;
+    align-items: center;
   }
   
-  .footer-links a {
-    text-decoration: none;
-  }
-  
-  .footer-links a:hover {
-    text-decoration: underline;
+  .footer-right {
+    margin-left: auto;
+    display: flex;
+    gap: 1rem;
   }
   

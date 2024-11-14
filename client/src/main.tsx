@@ -7,6 +7,8 @@ import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Error from './pages/Error';
+import Legal from './pages/Legal';
+import Contact from './pages/Contact';
 
 const router = createBrowserRouter([
   {
@@ -15,7 +17,7 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       {
-        index: true, // Set Landing as the default route
+        index: true,
         element: <Landing />
       },
       {
@@ -33,6 +35,14 @@ const router = createBrowserRouter([
       {
         path: '/me',
         element: <Profile />
+      },
+      {
+        path: '/legal',
+        element: <Legal />
+      },
+      {
+        path: '/contact',
+        element: <Contact />
       }
     ]
   },

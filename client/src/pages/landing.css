@@ -1,13 +1,46 @@
+/* Hero banner styling */
 .hero-banner {
-    background: #1bbc9b;
-    color: white;
-    padding: 60px 20px;
+    width: 100%;
+    background-color: #219ebc; /* Background color */
+    color: #fb8500; /* Orange text color */
+    padding: 2rem 0;
     text-align: center;
+    margin: 0;
+  }
+  
+  .hero-banner h1,
+  .hero-banner p {
+    margin: 0;
+  }
+  
+  /* Container spacing below hero banner */
+  .container {
+    margin-top: 3rem;
+  }
+  
+  /* Styling for card columns */
+  .row {
+    display: flex;
+    justify-content: space-between; /* Spacing between cards */
+  }
+  
+  .card {
+    background-color: #8ecae6;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 10px; /* Balanced space on both sides of each card */
+    flex: 1; /* Ensure cards are equally sized */
   }
   
   .card-image-placeholder {
-    height: 200px;
-    color: white;
-    font-size: 1.5rem;
+    height: 150px;
+    background-color: #023047; /* Dark background for placeholder */
+    color: #ffffff;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
