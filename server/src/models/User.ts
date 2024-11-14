@@ -6,7 +6,7 @@ interface IResume extends Document {
   _id: string;
   name: string;
   email: string;
-  education: string;
+  education: string[];
   experiences: string[];
   projects: string[];
   skills: string[];
@@ -134,4 +134,4 @@ userSchema.methods.isCorrectPassword = async function (password: string): Promis
 const Resume = model<IResume>('Resume', resumeSchema);
 const User = model<IUser>('User', userSchema);
 
-export { Resume, User };
+export { Resume, User, IResume };
