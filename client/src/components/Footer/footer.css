@@ -1,0 +1,21 @@
+/* footer.css */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #219ebc; /* Or your preferred background color */
+    color: #ffffff;
+  }
+  
+  .footer-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer-right {
+    margin-left: auto;
+    display: flex;
+    gap: 1rem;
+  }
+  
