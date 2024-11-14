@@ -1,137 +1,109 @@
-import { Profile } from '../models/index.js';
+import { User, Resume } from '../models/index.js';
 import { signToken, AuthenticationError } from '../utils/auth.js';
 
-interface Profile {
+interface User {
+  _id: string;
+  username: string;
+  email: string;
+  password: string;
+}
+
+interface Resume {
   _id: string;
   name: string;
   email: string;
-  password: string;
+  education: string;
+  experiences: string[];
+  projects: string[];
   skills: string[];
+  contacts: string[];
 }
 
-interface ProfileArgs {
-  profileId: string;
+interface AddUserArgs {
+  username: string;
+  email: string;
+  password: string;
 }
 
-interface AddProfileArgs {
-  input:{
-    name: string;
-    email: string;
-    password: string;
-  }
+interface AddResumeArgs {
+  name: string;
+  email: string;
+  education: string;
+  experiences: string[];
+  projects: string[];
+  skills: string[];
+  contacts: string[];
 }
 
-interface AddSkillArgs {
-  profileId: string;
-  skill: string;
+interface UpdateUserArgs {
+  _id: string;
+  username?: string;
+  email?: string;
+  password?: string;
 }
 
-interface RemoveSkillArgs {
-  profileId: string;
-  skill: string;
-}
-
-interface Context {
-  user?: Profile; // Optional user profile in context
+interface UpdateResumeArgs {
+  _id: string;
+  name?: string;
+  email?: string;
+  education?: string;
+  experiences?: string[];
+  projects?: string[];
+  skills?: string[];
+  contacts?: string[];
 }
 
 const resolvers = {
   Query: {
-    profiles: async (): Promise<Profile[]> => {
-      // Retrieve all profiles
-      return await Profile.find();
+    getAllUsers: async (): Promise<User[]> => {
+      return await User.find();
     },
 
-    profile: async (_parent: unknown, { profileId }: ProfileArgs): Promise<Profile | null> => {
-      // Retrieve a profile by its ID
-      return await Profile.findOne({ _id: profileId });
-    },
-
-    // By adding context to our query, we can retrieve the logged in user without specifically searching for them
-    me: async (_parent: unknown, _args: unknown, context: Context): Promise<Profile | null> => {
-      if (context.user) {
-        // If user is authenticated, return their profile
-        return await Profile.findOne({ _id: context.user._id });
-      }
-      // If not authenticated, throw an authentication error
-      throw new AuthenticationError('Not Authenticated');
+    getAllResumes: async (): Promise<Resume[]> => {
+      return await Resume.find();
     },
   },
 
   Mutation: {
-    addProfile: async (_parent: unknown, { input }: AddProfileArgs): Promise<{ token: string; profile: Profile }> => {
-      // Create a new profile with provided name, email, and password
-      const profile = await Profile.create({ ...input });
-      // Sign a JWT token for the new profile
-      const token = signToken(profile.name, profile.email, profile._id);
-
-      return { token, profile };
+    addUser: async (_: unknown, { username, email, password }: AddUserArgs): Promise<{ token: string; profile: User }> => {
+      const newUser = await User.create({ username, email, password });
+      const token = signToken(newUser.username, newUser.email, newUser._id);
+      return { token, profile: newUser };
     },
 
-    login: async (_parent: unknown, { email, password }: { email: string; password: string }): Promise<{ token: string; profile: Profile }> => {
-      // Find a profile by email
-      const profile = await Profile.findOne({ email });
-
-      if (!profile) {
-        // If profile with provided email doesn't exist, throw an authentication error
-        throw AuthenticationError;
+    login: async (_: unknown, { email, password }: { email: string; password: string }): Promise<{ token: string; profile: User }> => {
+      const user = await User.findOne({ email });
+      if (!user) {
+        throw new AuthenticationError('No user found with this email');
       }
 
-      // Check if the provided password is correct
-      const correctPw = await profile.isCorrectPassword(password);
-
-      if (!correctPw) {
-        // If password is incorrect, throw an authentication error
-        throw new AuthenticationError('Not Authenticated');
+      const isPasswordCorrect = await user.isCorrectPassword(password);
+      if (!isPasswordCorrect) {
+        throw new AuthenticationError('Incorrect credentials');
       }
 
-      // Sign a JWT token for the authenticated profile
-      const token = signToken(profile.name, profile.email, profile._id);
-      return { token, profile };
+      const token = signToken(user.username, user.email, user._id);
+      return { token, profile: user };
     },
 
-    // Add a third argument to the resolver to access data in our `context`
-    addSkill: async (_parent: unknown, { profileId, skill }: AddSkillArgs, context: Context): Promise<Profile | null> => {
-      // If context has a `user` property, that means the user executing this mutation has a valid JWT and is logged in
-      if (context.user) {
-        // Add a skill to a profile identified by profileId
-        return await Profile.findOneAndUpdate(
-          { _id: profileId },
-          {
-            $addToSet: { skills: skill },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-      }
-      // If user attempts to execute this mutation and isn't logged in, throw an error
-      throw new AuthenticationError('Could not find user');
+    addResume: async (_: unknown, { name, email, education, experiences, projects, skills, contacts }: AddResumeArgs): Promise<Resume> => {
+      return await Resume.create({ name, email, education, experiences, projects, skills, contacts });
     },
 
-    // Set up mutation so a logged in user can only remove their profile and no one else's
-    removeProfile: async (_parent: unknown, _args: unknown, context: Context): Promise<Profile | null> => {
-      if (context.user) {
-        // If context has a `user` property, delete the profile of the logged-in user
-        return await Profile.findOneAndDelete({ _id: context.user._id });
-      }
-      // If user attempts to execute this mutation and isn't logged in, throw an error
-      throw new AuthenticationError('Could not find user');
+    updateUser: async (_: unknown, { _id, username, email, password }: UpdateUserArgs): Promise<User | null> => {
+      return await User.findByIdAndUpdate(_id, { username, email, password }, { new: true, runValidators: true });
     },
 
-    // Make it so a logged in user can only remove a skill from their own profile
-    removeSkill: async (_parent: unknown, { skill }: RemoveSkillArgs, context: Context): Promise<Profile | null> => {
-      if (context.user) {
-        // If context has a `user` property, remove a skill from the profile of the logged-in user
-        return await Profile.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { skills: skill } },
-          { new: true }
-        );
-      }
-      // If user attempts to execute this mutation and isn't logged in, throw an error
-      throw new AuthenticationError('Could not find user');
+    updateResume: async (_: unknown, { _id, name, email, education, experiences, projects, skills, contacts }: UpdateResumeArgs): Promise<Resume | null> => {
+      return await Resume.findByIdAndUpdate(
+        _id,
+        { name, email, education, experiences, projects, skills, contacts },
+        { new: true, runValidators: true }
+      );
+    },
+
+    deleteResume: async (_: unknown, { _id }: { _id: string }): Promise<Resume | null> => {
+      return await Resume.findByIdAndDelete(_id);
     },
   },
 };

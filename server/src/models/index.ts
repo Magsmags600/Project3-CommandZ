@@ -1,3 +1,3 @@
-import Profile from './User.js';
+import  {User, Resume} from './User.js';
 
-export { Profile };
+export { User, Resume };
