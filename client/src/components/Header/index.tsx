@@ -1,43 +1,46 @@
 import { Link } from 'react-router-dom';
-import { type MouseEvent} from 'react';
+import { type MouseEvent } from 'react';
 import Auth from '../../utils/auth';
+import './header.css';
 
 const Header = () => {
   const logout = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     Auth.logout();
   };
+
   return (
-    <header className="bg-info text-dark mb-4 py-3 display-flex align-center">
-      <div className="container flex-column justify-space-between-lg justify-center align-center text-center">
-        <Link className="text-dark" to="/">
-          <h1 className="m-0" style={{ fontSize: '3rem' }}>
-            Tech Friends
-          </h1>
+    <header className="navbar navbar-expand-lg navbar-light bg-info">
+      <div className="container">
+        <Link className="navbar-brand logo-placeholder" to="/">
+          Logo
         </Link>
-        <p className="m-0" style={{ fontSize: '1.75rem', fontWeight: '700' }}>
-          Meet your new programming pals.
-        </p>
-        <div>
-          {Auth.loggedIn() ? (
-            <>
-              <Link className="btn btn-lg btn-primary m-2" to="/me">
-                View My Profile
+        <div className="collapse navbar-collapse justify-content-end">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className="nav-link" to="/myresumes">
+                MyResumes
               </Link>
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <Link className="btn btn-lg btn-primary m-2" to="/login">
-                Login
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/profile">
+                Profile
               </Link>
-              <Link className="btn btn-lg btn-light m-2" to="/signup">
-                Signup
-              </Link>
-            </>
-          )}
+            </li>
+            {Auth.loggedIn() ? (
+              <li className="nav-item">
+                <button className="btn btn-link nav-link" onClick={logout}>
+                  Logout
+                </button>
+              </li>
+            ) : (
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">
+                  Login
+                </Link>
+              </li>
+            )}
+          </ul>
         </div>
       </div>
     </header>

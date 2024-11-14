@@ -1,0 +1,17 @@
+.footer-bar {
+    width: 100%;
+    position: relative;
+  }
+  
+  .footer-links {
+    text-align: right;
+  }
+  
+  .footer-links a {
+    text-decoration: none;
+  }
+  
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+  

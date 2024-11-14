@@ -1,0 +1,25 @@
+.logo-placeholder {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .navbar-light .navbar-nav .nav-link {
+    color: #1a1a1a;
+  }
+  
+  .navbar-light .navbar-nav .nav-link:hover {
+    color: #065b83;
+  }
+  
+  .btn-link.nav-link {
+    color: #1a1a1a;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .btn-link.nav-link:hover {
+    color: #065b83;
+  }
+  
