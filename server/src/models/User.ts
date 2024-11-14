@@ -113,7 +113,7 @@ const userSchema = new Schema<IUser>(
 );
 
 // Middleware to hash passwords before saving for both Resume and User
-const hashPassword = async function (next: any) {
+const hashPassword = async function (this: any, next: any) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
