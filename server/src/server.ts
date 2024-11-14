@@ -46,7 +46,7 @@ const startApolloServer = async () => {
         }
 
         // Generate and send the PDF response
-        generateResumePDF(resume, res);
+        generateResumePDF(resume);
       } catch (error) {
         console.error('Error generating PDF:', error);
         res.status(500).send('Internal Server Error');

@@ -1,17 +1,15 @@
-import  PDFDocument  from 'pdfkit';
-import { Response } from 'express';
-import { IResume } from '../models/User'; // Import the Resume interface if needed
+import PDFDocument from 'pdfkit';
+import fs from 'fs';
+import { IResume } from '../models/User';
 
-// Function to generate PDF and pipe it to the response
-export const generateResumePDF = (resume: IResume, res: Response) => {
+// Function to generate PDF and save to a file
+export const generateResumePDF = (resume: IResume) => {
   const doc = new PDFDocument();
+  const fileName = `${resume.name}_Resume.pdf`;
 
-  // Set the headers to indicate a PDF download
-  res.setHeader('Content-Type', 'application/pdf');
-  res.setHeader('Content-Disposition', `attachment; filename=${resume.name}_Resume.pdf`);
-
-  // Pipe the PDF document to the response
-  doc.pipe(res);
+  // Create a writable stream to save the PDF to a file
+  const stream = fs.createWriteStream(fileName);
+  doc.pipe(stream);
 
   // Title and Basic Info
   doc.fontSize(20).text(`${resume.name}'s Resume`, { align: 'center' });
@@ -31,13 +29,16 @@ export const generateResumePDF = (resume: IResume, res: Response) => {
   resume.experiences.forEach((exp: any) => {
     doc.fontSize(12).text(`- ${exp}`);
   });
+  doc.moveDown();
 
   // Education Section
   doc.fontSize(16).text('Education:');
   resume.education.forEach((edu: any) => {
     doc.fontSize(12).text(`- ${edu}`);
   });
-  // project Section
+  doc.moveDown();
+
+  // Projects Section
   doc.fontSize(16).text('Projects:');
   resume.projects.forEach((project: any) => {
     doc.fontSize(12).text(`- ${project}`);
@@ -45,6 +46,23 @@ export const generateResumePDF = (resume: IResume, res: Response) => {
 
   // Finalize the PDF and end the document stream
   doc.end();
+
+  stream.on('finish', () => {
+    console.log(`PDF generated successfully: ${fileName}`);
+  });
 };
-// Replace <resume_id> with an actual ID from database to download the resume as a PDF.
-// This setup should give users a download option dynamically generated PDF of their resume. 
+
+// Test Data
+const ResumeData: any = {  
+  _id: 'name',
+  name: 'Bob',
+  email: 'mail@mail.com',
+  education: ['Uc Irvine', 'Sacramento State University', 'MIT'],
+  experiences: ['Military', 'Software Development'],
+  projects: ['Project A', 'Project B'],
+  skills: ['JavaScript', 'TypeScript'],
+  contacts: []
+};
+
+// Call the function with test data
+generateResumePDF(ResumeData);
