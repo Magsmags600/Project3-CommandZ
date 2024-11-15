@@ -40,7 +40,28 @@ const typeDefs = `
     endDate: String!
   }
 
-  
+  type Query {
+    # 1. Get user by ID
+    getUserById(_id: ID!): User
+  }
+
+
+  input EducationInput {
+    educationId: ID!
+    institution: String!
+    degree: String!
+    fieldOfStudy: String!
+    startDate: String!
+    endDate: String!
+  }
+
+  input ProjectInput {
+    projectsId: ID!
+    title: String!
+    description: String!
+    startDate: String!
+    endDate: String!
+  }
 
 `;
 
