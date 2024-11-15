@@ -1,4 +1,4 @@
-import { Schema, model, Document } from 'mongoose';
+import { Schema, model, Document, ObjectId} from 'mongoose';
 import bcrypt from 'bcrypt';
 import Education from './Education.js';
 import Projects from './Projects.js';
@@ -24,6 +24,7 @@ interface IUser extends Document {
   email: string;
   password: string;
   isCorrectPassword(password: string): Promise<boolean>;
+  resume: IResume[];
 }
 
 // Define the schema for the Resume document
@@ -89,6 +90,10 @@ const userSchema = new Schema<IUser>(
       type: String,
       required: true,
       minlength: 5,
+    },
+    resume:{
+      type: ObjectId,
+      ref: 'Resume',
     },
   },
   {
