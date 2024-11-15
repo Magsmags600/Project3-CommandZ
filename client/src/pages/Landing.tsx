@@ -1,5 +1,5 @@
 import './landing.css';
-
+// !ADDING LINK TO LOGIN PAGE EITHER IN HEADER OR IN LIKE A DROP DOWN.
 const Landing: React.FC = () => {
   return (
     <main className="landing-page">

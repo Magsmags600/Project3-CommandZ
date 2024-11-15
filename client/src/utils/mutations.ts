@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-
+// !NEEDS TO BE ADJ. TO THE SERVER SIDE TYPEDEFS.
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {
     addUser(username: $username, email: $email, password: $password) {

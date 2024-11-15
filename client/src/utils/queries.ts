@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+// !NEEDS TO BE ADJ. TO THE SERVER SIDE TYPEDEFS.
 
 export const QUERY_ALL_USERS = gql`
   query getAllUsers {
