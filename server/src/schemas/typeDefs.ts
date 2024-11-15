@@ -63,6 +63,29 @@ const typeDefs = `
     endDate: String!
   }
 
+  type Mutation {
+    addUser(username: String!, email: String!, password: String!): Auth!
+    
+    addResume(
+      name: String!, 
+      email: String!, 
+      education: [EducationInput!]!, 
+      experiences: [String!]!, 
+      projects: [ProjectInput!]!, 
+      skills: [String!]!, 
+      contacts: [String!]!
+    ): Resume!
+
+    updateUser(
+      _id: ID!, 
+      username: String, 
+      email: String, 
+      password: String
+    ): User!
+    
+    deleteResume(_id: ID!): Resume!
+  }
+
 `;
 
 export default typeDefs;
