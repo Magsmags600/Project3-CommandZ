@@ -1,5 +1,6 @@
 import { Profile } from '../models/index.js';
 import { signToken, AuthenticationError } from '../utils/auth.js';
+import { OpenAi } from '@langchain/openai';
 
 interface Profile {
   _id: string;
@@ -35,6 +36,16 @@ interface Context {
   user?: Profile; // Optional user profile in context
 }
 
+interface GenerateResume {
+  input: {
+    name: string;
+    email: string;
+    education: string;
+    experience: string;
+    field: string;
+  }
+}
+
 const resolvers = {
   Query: {
     profiles: async (): Promise<Profile[]> => {
@@ -56,6 +67,7 @@ const resolvers = {
       // If not authenticated, throw an authentication error
       throw new AuthenticationError('Not Authenticated');
     },
+
   },
 
   Mutation: {
@@ -132,6 +144,37 @@ const resolvers = {
       }
       // If user attempts to execute this mutation and isn't logged in, throw an error
       throw new AuthenticationError('Could not find user');
+    },
+
+    generateResume: async (_parent: any, { input }: GenerateResume ) => {
+      try { // field is for what area they want ressume to be built in 
+          const { name, email, education, experience, field} = input;
+  
+          const prompt = `
+              Create a professional resume for the following individual
+  
+              Name: ${name}
+              Email: ${email}
+              Education: ${education}
+              Experience: ${experience}
+              Field: ${field}
+  
+              Format the document in a professional manner in accorodance to what they selected for Field, and have it be clear and easy to view for each item.
+  
+          `;
+  
+          const response = await OpenAi.createCompletion({
+              model: 'text-davinici-003',
+              prompt: prompt,
+              max_tokens: 1500,
+          });
+  
+          const resumeText = response.data.choices[0].text;
+  
+          console.log(resumeText);
+      } catch (error) {
+          console.error(error);
+      }
     },
   },
 };
