@@ -40,7 +40,51 @@ const typeDefs = `
     endDate: String!
   }
 
-  
+  type Query {
+    # 1. Get user by ID
+    getUserById(_id: ID!): User
+  }
+
+
+  input EducationInput {
+    educationId: ID!
+    institution: String!
+    degree: String!
+    fieldOfStudy: String!
+    startDate: String!
+    endDate: String!
+  }
+
+  input ProjectInput {
+    projectsId: ID!
+    title: String!
+    description: String!
+    startDate: String!
+    endDate: String!
+  }
+
+  type Mutation {
+    addUser(username: String!, email: String!, password: String!): Auth!
+    
+    addResume(
+      name: String!, 
+      email: String!, 
+      education: [EducationInput!]!, 
+      experiences: [String!]!, 
+      projects: [ProjectInput!]!, 
+      skills: [String!]!, 
+      contacts: [String!]!
+    ): Resume!
+
+    updateUser(
+      _id: ID!, 
+      username: String, 
+      email: String, 
+      password: String
+    ): User!
+    
+    deleteResume(_id: ID!): Resume!
+  }
 
 `;
 
