@@ -33,6 +33,7 @@ const typeDefs = `
     updateUser(_id: ID!, username: String, email: String, password: String): User!
     updateResume(_id: ID!, name: String, email: String, education: String, experiences: [String!], projects: [String!], skills: [String!], contacts: [String!]): Resume!
     deleteResume(_id: ID!): Resume!
+    generateResume(input: )
   }
 
 `;

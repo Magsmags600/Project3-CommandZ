@@ -1,5 +1,6 @@
 import { User, Resume, Education, Projects } from '../models/index.js';
 import { signToken, AuthenticationError } from '../utils/auth.js';
+import { OpenAI } from '@langchain/openai';
 
 interface User {
   _id: string;
@@ -53,6 +54,18 @@ interface UpdateResumeArgs {
   contacts?: string[];
 }
 
+interface GenerateResume {
+  input: {
+    name: string;
+    email: string;
+    education: string[];
+    experiences: string[];
+    projects: string[];
+    skills: string[];
+    contacts: string[];
+  }
+}
+
 const resolvers = {
   Query: {
     getAllUsers: async (): Promise<User[]> => {
@@ -104,6 +117,39 @@ const resolvers = {
 
     deleteResume: async (_: unknown, { _id }: { _id: string }): Promise<Resume | null> => {
       return await Resume.findByIdAndDelete(_id);
+    },
+
+    generateResume: async (_parent: any, { input }: GenerateResume) => {
+      try { // field is for what area they want ressume to be built in 
+        const { name, email, education, experiences, projects, skills, contacts } = input;
+
+        const prompt = `
+              Create a professional resume for the following individual
+  
+              Name: ${name}
+              Email: ${email}
+              Education: ${education}
+              Experiences: ${experiences}
+              Projects: ${projects}
+              Skills: ${skills}
+              Contacts: ${contacts}
+  
+              Format the document in a professional manner in accorodance to what they selected for Field, and have it be clear and easy to view for each item.
+  
+          `;
+
+        const response = await OpenAI.createCompletion({
+          model: 'text-davinici-003',
+          prompt: prompt,
+          max_tokens: 1500,
+        });
+
+        const resumeText = response.data.choices[0].text;
+
+        console.log(resumeText);
+      } catch (error) {
+        console.error(error);
+      }
     },
   },
 };
