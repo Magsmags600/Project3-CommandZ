@@ -3,13 +3,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App';
 import Landing from './pages/Landing';
-import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Error from './pages/Error';
 import Legal from './pages/Legal';
 import Contact from './pages/Contact';
-
+import Home from './pages/Home';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,20 +28,16 @@ const router = createBrowserRouter([
         element: <Signup />
       },
       {
-        path: '/profiles/:profileId',
-        element: <Profile />
-      },
-      {
-        path: '/me',
-        element: <Profile />
-      },
-      {
         path: '/legal',
         element: <Legal />
       },
       {
         path: '/contact',
         element: <Contact />
+      },
+      {
+        path: '/Home',
+        element: <Home/>
       }
     ]
   },
