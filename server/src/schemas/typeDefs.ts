@@ -63,6 +63,16 @@ const typeDefs = `
     endDate: String!
   }
 
+  input GenerateResumeInput {
+    name: String!
+    email: String!
+    education: [Education!]!
+    experiences: [String!]!
+    projects: [Project!]!
+    skills: [String!]!
+    contacts: [String!]!
+  }
+
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth!
     
@@ -84,6 +94,7 @@ const typeDefs = `
     ): User!
     
     deleteResume(_id: ID!): Resume!
+    generateResume(input: GenerateResumeInput!)
   }
 
 `;
