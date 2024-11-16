@@ -1,0 +1,16 @@
+// Footer/index.tsx
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './footer.css';
+const Footer = () => {
+    return (<footer className="footer-container">
+      <div className="footer-left">
+        <p>&copy; {new Date().getFullYear()} Tech Friends</p>
+      </div>
+      <div className="footer-right">
+        <Link to="/legal" className="text-white">Legal</Link>
+        <Link to="/contact" className="text-white">Contact</Link>
+      </div>
+    </footer>);
+};
+export default Footer;

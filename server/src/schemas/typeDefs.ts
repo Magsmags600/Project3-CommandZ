@@ -66,9 +66,9 @@ const typeDefs = `
   input GenerateResumeInput {
     name: String!
     email: String!
-    education: [Education!]!
+    education: [EducationInput!]!
     experiences: [String!]!
-    projects: [Project!]!
+    projects: [ProjectInput!]!
     skills: [String!]!
     contacts: [String!]!
   }
@@ -94,7 +94,7 @@ const typeDefs = `
     ): User!
     
     deleteResume(_id: ID!): Resume!
-    generateResume(input: GenerateResumeInput!)
+    generateResume(input: GenerateResumeInput!):String!
   }
 
 `;
