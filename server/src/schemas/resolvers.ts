@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import { User, Resume, Education, Projects } from '../models/index.js';
 import { signToken, AuthenticationError} from '../utils/auth.js';
 import OpenAI from 'openai';
