@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ProjectData from "../../interfaces/ProjectData";
+import './project.css';
 
 const ProjectForm: React.FC = () => {
   const [projectData, setProjectData] = useState<ProjectData[]>([]);
