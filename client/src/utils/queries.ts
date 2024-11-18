@@ -1,35 +1,34 @@
 import { gql } from '@apollo/client';
-// !NEEDS TO BE ADJ. TO THE SERVER SIDE TYPEDEFS.
 
-export const QUERY_ALL_USERS = gql`
-  query getAllUsers {
-    getAllUsers {
+export const GET_USER_BY_ID = gql`
+  query getUserById($id: ID!) {
+    getUserById(_id: $id) {
       _id
       username
       email
-    }
-  }
-`;
-export const QUERY_USER = gql`
-  query getUser {
-    getUser {
-      _id
-      username
-      email
-    }
-  }
-`;
-export const QUERY_ALL_RESUMES = gql`
-  query getAllResumes {
-    getAllResumes {
-      _id
-      name
-      email
-      education
-      experiences
-      projects
-      skills
-      contacts
+      resume {
+        _id
+        name
+        email
+        education {
+          educationId
+          institution
+          degree
+          fieldOfStudy
+          startDate
+          endDate
+        }
+        experiences
+        projects {
+          projectsId
+          title
+          description
+          startDate
+          endDate
+        }
+        skills
+        contacts
+      }
     }
   }
 `;
