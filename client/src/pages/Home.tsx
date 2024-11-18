@@ -1,6 +1,8 @@
 // import { useQuery } from '@apollo/client';
 import { useState } from "react";
 import ProfileForm from "../components/ProfileForm";
+import EducationForm from "../components/EducationComponent";
+import ProjectForm from "../components/ProjectComponent";
 // import ProfileList from '../components/ProfileList';
 
 // import { QUERY_PROFILES } from '../utils/queries';
@@ -14,11 +16,11 @@ const Home = () => {
       case "profile":
         return <ProfileForm />;
       case "education":
-        return "<education />";
+        return <EducationForm />;
       case "skills":
         return '<skills />';
       case "project":
-        return '<project />';
+        return <ProjectForm />;
       default:
         return '<h1>404 Page Not Found</h1>';
     }
