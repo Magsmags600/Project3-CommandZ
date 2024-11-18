@@ -1,8 +1,9 @@
 # Project3-CommandZ
-Resume Builder Generator
+Resume Data Filler / Enhancer
 
   :TITLE:
-👑Resume generator
+👑Resume Data Filler / Enhancer
+
 
 - 🪙💸(https://github.com/keenanmaupin) | (https://github.com/HappyPup1402) |(https://github.com/Jaggz) | (https://github.com/magsmags600) | (https://github.com/balshersran)🪙💸
 
@@ -39,24 +40,24 @@ Resume Builder Generator
 ## Description
 
 🪝[Quick-Referance-I.D.] 
-- Using this full stack application, the User will be able to generate a resume prompted by an open AI and be able to download the PDF for personel useage.
+- Using this full stack application, the User will be able to: Utalize API to take the Users input, Enhance the passed over data by re-wording and presenting the data in a Cascading PDF, Thus providing Comprehensive Sections the User will be able to pull from and add to their Desired Resume Structure.
 
 🪝[In-Depth-I.D.] 
-- The motivation for this project was to create a Full Stack application using MongoDB and React as our main programs to generate a resume PDF.
-- Reason for building this application is to showcase how we are capable to use MERN stack.
-- We learned how to use MongoDB and change routes to resolvers/TypeDefs. Also being able to become more comfortable in the MERN Stack. 
+- The motivation for this project was to create a Full Stack application using MongoDB and React as our main programs to generate a resume PDF that can be used to Enhance A Users Resume.
+- Reason for building this application is to showcase how we are capable to use MERN stack and an open AI library.
+- We learned how to use MongoDB and change routes to resolvers/TypeDefs. Also being able to become more comfortable in Utalization of the MERN Stack structure. 
 
 -------------------------------------------------------
 ## Installation 
 - Users are going to have to log in  | create an account to be presented with the following pages/application.
 ## Usage
-- Main purpose and use of this application is to create a resume and cover letter.
+- Main purpose and use of this application: To create a resume PDF Filler useing API to Enhance the Users inputs.
 ## Contributions
 - [ADD HERE]
 -------------------------------------------------------
 ## User Story
 - 🕯️AS AN user
-I WANT to create a Resume &| Cover letter.
+I WANT to create a Resume &| Cover letter PDF data Filler.
 SO THAT I can review and download the PDF for future useage.🕯️
 
 ## Acceptance Criteria
