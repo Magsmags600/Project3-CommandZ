@@ -9,6 +9,8 @@ import Error from './pages/Error';
 import Legal from './pages/Legal';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
+import Profile from './components/ProfileForm';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,8 +38,12 @@ const router = createBrowserRouter([
         element: <Contact />
       },
       {
-        path: '/Home',
+        path: '/home',
         element: <Home/>
+      },
+      {
+        path: '/profile',
+        element: <Profile/>
       }
     ]
   },

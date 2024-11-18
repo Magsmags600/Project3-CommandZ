@@ -1,0 +1,28 @@
+/* Profile Form Custom Styles */
+
+.profile-form {
+    font-family: Arial, sans-serif;
+  }
+  
+  .profile-form .card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+  }
+  
+  .profile-form .card-title {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .profile-form .form-label {
+    font-weight: 500;
+  }
+  
+  .profile-form input {
+    border-radius: 8px;
+  }
+  
+  .profile-form textarea {
+    border-radius: 8px;
+  }
+  
