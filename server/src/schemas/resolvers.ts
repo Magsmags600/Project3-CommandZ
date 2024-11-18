@@ -1,5 +1,5 @@
 import { User, Resume, Education, Projects } from '../models/index.js';
-import { signToken } from '../utils/auth.js';
+import { signToken, AuthenticationError} from '../utils/auth.js';
 import OpenAI from 'openai';
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 import * as fs from "fs";
@@ -95,20 +95,20 @@ const resolvers = {
       return { token, profile: newUser };
     },
 
-    // login: async (_: unknown, { email, password }: { email: string; password: string }): Promise<{ token: string; profile: User }> => {
-    //   const user = await User.findOne({ email });
-    //   if (!user) {
-    //     throw new AuthenticationError('No user found with this email');
-    //   }
+    login: async (_: unknown, { email, password }: { email: string; password: string }): Promise<{ token: string; profile: User }> => {
+      const user = await User.findOne({ email });
+      if (!user) {
+        throw new AuthenticationError('No user found with this email');
+      }
 
-    //   const isPasswordCorrect = await user.isCorrectPassword(password);
-    //   if (!isPasswordCorrect) {
-    //     throw new AuthenticationError('Incorrect credentials');
-    //   }
+      const isPasswordCorrect = await user.isCorrectPassword(password);
+      if (!isPasswordCorrect) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
 
-    //   const token = signToken(user.username, user.email, user._id);
-    //   return { token, profile: user };
-    // },
+      const token = signToken(user.username, user.email, user._id);
+      return { token, profile: user };
+    },
 
     addResume: async (_: unknown, { name, email, education, experiences, projects, skills, contacts }: AddResumeArgs): Promise<Resume> => {
       return await Resume.create({ name, email, education, experiences, projects, skills, contacts });
