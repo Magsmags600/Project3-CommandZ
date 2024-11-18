@@ -3,6 +3,7 @@ import { signToken, AuthenticationError} from '../utils/auth.js';
 import OpenAI from 'openai';
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 import * as fs from "fs";
+
 // Initialize OpenAI client with the API key
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,  // Use your OpenAI API key here
@@ -51,16 +52,6 @@ interface UpdateUserArgs {
   password?: string;
 }
 
-// interface UpdateResumeArgs {
-//   _id: string;
-//   name?: string;
-//   email?: string;
-//   education?: string;
-//   experiences?: string[];
-//   projects?: string[];
-//   skills?: string[];
-//   contacts?: string[];
-// }
 
 interface GenerateResume {
   input: {
@@ -76,23 +67,17 @@ interface GenerateResume {
 
 const resolvers = {
   Query: {
-    // getAllUsers: async (): Promise<User[]> => {
-    //   return await User.find();
-    // },
 
-    // getAllResumes: async (): Promise<Resume[]> => {
-    //   return await Resume.find();
-    // },
     getUserById: async (_parent: unknown, { _id }: any) => {
       return await Resume.findById({ _id });
     }
   },
 
   Mutation: {
-    addUser: async (_: unknown, { username, email, password }: AddUserArgs): Promise<{ token: string; profile: User }> => {
+    addUser: async (_: unknown, { username, email, password }: AddUserArgs): Promise< User> => {
+      console.log(username);
       const newUser = await User.create({ username, email, password });
-      const token = signToken(newUser.username, newUser.email, newUser._id);
-      return { token, profile: newUser };
+      return newUser;
     },
 
     login: async (_: unknown, { email, password }: { email: string; password: string }): Promise<{ token: string; profile: User }> => {
@@ -107,6 +92,7 @@ const resolvers = {
       }
 
       const token = signToken(user.username, user.email, user._id);
+      console.log(token);
       return { token, profile: user };
     },
 
@@ -118,13 +104,7 @@ const resolvers = {
       return await User.findByIdAndUpdate(_id, { username, email, password }, { new: true, runValidators: true });
     },
 
-    // updateResume: async (_: unknown, { _id, name, email, education, experiences, projects, skills, contacts }: UpdateResumeArgs): Promise<Resume | null> => {
-    //   return await Resume.findByIdAndUpdate(
-    //     _id,
-    //     { name, email, education, experiences, projects, skills, contacts },
-    //     { new: true, runValidators: true }
-    //   );
-    // },
+
 
     deleteResume: async (_: unknown, { _id }: { _id: string }): Promise<Resume | null> => {
       return await Resume.findByIdAndDelete(_id);

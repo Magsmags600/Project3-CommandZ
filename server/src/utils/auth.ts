@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { GraphQLError } from 'graphql';
-import dotenv from 'dotenv';
-dotenv.config();
+
 
 
 export const authenticateToken = ({ req }: any) => {
@@ -35,7 +34,8 @@ export const authenticateToken = ({ req }: any) => {
 export const signToken = (username: string, email: string, _id: unknown) => {
   // Create a payload with the user information
   const payload = { username, email, _id };
-  const secretKey: any = process.env.JWT_SECRET_KEY; // Get the secret key from environment variables
+  const secretKey: any = process.env.JWT_SECRET_KEY; 
+  console.log(secretKey);// Get the secret key from environment variables
 
   // Sign the token with the payload and secret key, and set it to expire in 2 hours
   return jwt.sign({ data: payload }, secretKey, { expiresIn: '2h' });
