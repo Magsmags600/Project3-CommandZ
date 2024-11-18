@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './profileform.css';
-import { EducationData, ProjectData, ResumeData, User } from './interfaces';
+import './profile.css';
+import type { EducationData, ProjectData, ResumeData, User } from '../../interfaces';
 
 const ProfileForm: React.FC = () => {
   const [userData, setUserData] = useState<User>({
@@ -205,7 +205,7 @@ const ProfileForm: React.FC = () => {
                     type="text"
                     placeholder="Project Title"
                     className="form-control mb-2"
-                    value={proj.title}
+                    value={proj.title||''}
                     onChange={(e) =>
                       handleProjectChange(index, 'title', e.target.value)
                     }
