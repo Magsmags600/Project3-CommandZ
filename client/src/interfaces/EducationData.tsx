@@ -1,6 +1,6 @@
  
 
-    export interface EducationData {
+    export default interface EducationData {
         educationId: string;
         institution: string;
         degree: string;

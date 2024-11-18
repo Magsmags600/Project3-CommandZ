@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import './profileform.css';
-import { EducationData, ProjectData, ResumeData, User } from './interfaces';
+import './profile.css';
+import EducationData from "../../interfaces/EducationData";
+import ProjectData from "../../interfaces/ProjectData";
+import ResumeData from "../../interfaces/ResumeData";
+import User from "../../interfaces/User";
 
 const ProfileForm: React.FC = () => {
   const [userData, setUserData] = useState<User>({
@@ -67,6 +70,7 @@ const ProfileForm: React.FC = () => {
         description: '',
         startDate: new Date(),
         endDate: new Date(),
+
       },
     ]);
   };

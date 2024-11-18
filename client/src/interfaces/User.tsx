@@ -1,6 +1,6 @@
-import type { ResumeData } from './ResumeData.js';
+import type  ResumeData  from './ResumeData.js';
 
-export interface User {
+export default interface User {
   username: string | null;
   email: string | null;
   password: string | null;
