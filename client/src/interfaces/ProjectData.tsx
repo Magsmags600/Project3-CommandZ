@@ -1,4 +1,4 @@
-export interface ProjectData {
+export default interface ProjectData {
     projectsId:string;
     title: string,
     description: string,

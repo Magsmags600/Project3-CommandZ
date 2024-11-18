@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './profile.css';
+
 import type { EducationData, ProjectData, ResumeData, User } from '../../interfaces';
+
+
 
 const ProfileForm: React.FC = () => {
   const [userData, setUserData] = useState<User>({
@@ -67,6 +70,7 @@ const ProfileForm: React.FC = () => {
         description: '',
         startDate: new Date(),
         endDate: new Date(),
+
       },
     ]);
   };

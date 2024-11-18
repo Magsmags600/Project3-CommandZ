@@ -5,6 +5,7 @@ import ProfileForm from "../components/ProfileForm";
 
 // import { QUERY_PROFILES } from '../utils/queries';
 
+import ProfileForm from "../components/ProfileForm";
 const Home = () => {
   // const { loading, data } = useQuery(QUERY_PROFILES);
   // const profiles = data?.profiles || [];
@@ -45,12 +46,14 @@ const Home = () => {
 
   return (
     <main>
+
       <div className="d-flex justify-content-center">
         <div className="col-12 col-md-10 my-3">
 
           {renderPage()}
 
           
+
         </div>
 
         <div className="col-6 col-md-10 my-3 float-left " style={{float:"left"}}>
