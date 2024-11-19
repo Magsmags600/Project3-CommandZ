@@ -6,6 +6,7 @@ import ProjectForm from "../components/ProjectComponent";
 import SkillsForm from "../components/SkillsComponent.tsx";
 import ExperienceForm from "../components/ExperienceComponent/index.tsx";
 import SaveResume from "../components/SaveResumeComponent/index.tsx";
+import Auth from "../utils/auth.ts"
 // import { ADD_RESUME } from "../utils/mutations.ts";
 // import { useMutation } from "@apollo/client";
 import {
@@ -120,13 +121,13 @@ const Home = () => {
     ]);
   };
   // profiledata functions
-  const [profileData, setProfileData] = useState<ProfileData>({}as ProfileData);
+  const [profileData, setProfileData] = useState<ProfileData>({} as ProfileData);
 
   const handleProfileChange = (field: string, value: any) => {
     setProfileData({ ...profileData, [field]: value });
-    setResumeData({ ...resumeData,name:profileData.name ,email:profileData.email,address:profileData.address,phone:profileData.phone })
+    setResumeData({ ...resumeData, name: profileData.name, email: profileData.email, address: profileData.address, phone: profileData.phone })
   };
-  const saveResumeData = () =>{
+  const saveResumeData = () => {
     console.log(resumeData);
     // try{
     //   await addResume({
@@ -139,12 +140,12 @@ const Home = () => {
   }
 
   const [count, setCount] = useState<number>(0);
-  const cards = ["profile", "education", "experience", "skills", "project",'SaveResume'];
+  const cards = ["profile", "education", "experience", "skills", "project", 'SaveResume'];
 
   const renderPage = () => {
     switch (cards[count]) {
       case "profile":
-        return <ProfileForm handleProfileChange={handleProfileChange} profileData={profileData}/>;
+        return <ProfileForm handleProfileChange={handleProfileChange} profileData={profileData} />;
       case "education":
         return (
           <EducationForm
@@ -179,7 +180,7 @@ const Home = () => {
         );
       case "SaveResume":
         return (
-              <SaveResume saveResumeData={saveResumeData}/>
+          <SaveResume saveResumeData={saveResumeData} />
         );
       // default:
       //   return <ProfileForm />;
@@ -201,28 +202,34 @@ const Home = () => {
   };
 
   return (
-    <main>
-      <div className="d-flex justify-content-center">
-        <div className="col-12 col-md-10 my-3">{renderPage()}</div>
 
-        <div
-          className="col-6 col-md-10 my-3 float-left "
-          style={{ float: "left" }}
-        >
-          <button className="btn btn-info" onClick={decrement}>
-            PREVIOUS
-          </button>
-        </div>
-        <div
-          className="col-6 col-md-10 my-3 float-right"
-          style={{ float: "right" }}
-        >
-          <button className="btn btn-success" onClick={increment}>
-            NEXT
-          </button>
-        </div>
-      </div>
-    </main>
+    <>
+      {Auth.loggedIn() ? (
+        <main>
+          <div className="d-flex justify-content-center">
+            <div className="col-12 col-md-10 my-3">{renderPage()}</div>
+
+            <div
+              className="col-6 col-md-10 my-3 float-left "
+              style={{ float: "left" }}
+            >
+              <button className="btn btn-info" onClick={decrement}>
+                PREVIOUS
+              </button>
+            </div>
+            <div
+              className="col-6 col-md-10 my-3 float-right"
+              style={{ float: "right" }}
+            >
+              <button className="btn btn-success" onClick={increment}>
+                NEXT
+              </button>
+            </div>
+          </div>
+        </main>
+      ) : (<div>Not Authorized !! Pls SignUP/Login......</div>)
+      }
+    </>
   );
 };
 
