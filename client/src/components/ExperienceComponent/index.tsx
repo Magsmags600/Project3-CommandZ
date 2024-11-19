@@ -1,70 +1,73 @@
-import React, { useState } from "react";
-import type { ExperienceData } from "../../interfaces/index";
 
-const ExperienceForm: React.FC = () => {
-  const [experienceData, setExperienceData] = useState<ExperienceData>({
-    company: "",
-    description: "",
-    startDate: "",
-    endDate: "",
-  });
+// import { useState } from "react";
+import ExperienceData from "../../interfaces/ExperienceData";
 
-  const handleExperienceChange = (field: string, value: any) => {
-    setExperienceData({ ...experienceData, [field]: value });
-  };
+
+
+
+interface ExperienceProps{
+  experienceData:ExperienceData[],
+  handleAddExperience:()=>void,
+  handleExperienceChange:(index: number, field: string, value: any) =>void
+}
+const ExperienceForm = (props:ExperienceProps) => {
+
+
 
   return (
-    <div className="container profile-form my-5">
-      <h1 className="text-center mb-4">Experience Form</h1>
-      <div className="row">
-        {/* Experience Data Card */}
-        <div className="col-md-6 mb-4">
-          <div className="card">
-            <div className="card-body">
-              <h5 className="card-title">Experience Data</h5>
-              <div className="mb-3">
-                <label className="form-label">Previous Company</label>
+    <div className="ed-form">
+      {/* Education Data Card */}
+      <div className="col-md-6 mb-4">
+        <div className="card">
+          <div className="card-body">
+            <h5 className="card-title">Experience Data</h5>
+            {props.experienceData.map((exp:any, index:number) => (
+              <div key={exp.experiencenId} className="mb-3">
                 <input
                   type="text"
-                  className="form-control"
-                  value={experienceData.company}
-                  onChange={(e) => handleExperienceChange("company", e.target.value)}
-                />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Description</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  value={experienceData.description}
+                  placeholder="Previous Company Name"
+                  className="form-control mb-2"
+                  value={exp.institution}
                   onChange={(e) =>
-                    handleExperienceChange("description", e.target.value)
+                    props.handleExperienceChange(index, "company", e.target.value)
                   }
                 />
-                <div className="mb-3">
-                  <label className="form-label">Start Date</label>
-                  <input
-                    type="date"
-                    className="form-control"
-                    value={experienceData.startDate}
-                    onChange={(e) =>
-                      handleExperienceChange("startDate", e.target.value)
-                    }
-                  />
-                  <div className="mb-3">
-                    <label className="form-label">End Date</label>
-                    <input
-                      type="date"
-                      className="form-control"
-                      value={experienceData.description}
-                      onChange={(e) =>
-                        handleExperienceChange("endDate", e.target.value)
-                      }
-                    />
-                  </div>
-                </div>
+                <input
+                  type="text"
+                  placeholder="Description"
+                  className="form-control mb-2"
+                  value={exp.degree}
+                  onChange={(e) =>
+                    props.handleExperienceChange(index, "description", e.target.value)
+                  }
+                />
+                <input
+                  type="date"
+                  placeholder="Start Date"
+                  className="form-control mb-2"
+                  value={exp.startDate}
+                  onChange={(e) =>
+                    props.handleExperienceChange(index, "startDate", e.target.value)
+                  }
+                />
+                <input
+                  type="date"
+                  placeholder="End Date"
+                  className="form-control mb-2"
+                  value={exp.endDate}
+                  onChange={(e) =>
+                    props.handleExperienceChange(index, "endDate", e.target.value)
+                  }
+                />
+                {/* Other inputs for degree, fieldOfStudy, etc. */}
+ 
               </div>
-            </div>
+              
+              
+            ))}
+            <button className="btn btn-primary" onClick={()=>props.handleAddExperience()}>
+              Add Experience
+            </button>
           </div>
         </div>
       </div>

@@ -4,9 +4,11 @@ import ProfileForm from "../components/ProfileForm";
 import EducationForm from "../components/EducationComponent";
 import ProjectForm from "../components/ProjectComponent";
 import SkillsForm from "../components/SkillsComponent.tsx";
+import ExperienceForm from "../components/ExperienceComponent/index.tsx";
 import {
   ResumeData,
   EducationData,
+  ExperienceData,
   ProjectData,
   SkillsData,
 } from "../interfaces";
@@ -40,6 +42,31 @@ const Home = () => {
       },
     ]);
   };
+  // experience functions
+  const [experienceData, setExperienceData] = useState<ExperienceData[]>([]);
+
+  const handleExperienceChange = (index: number, field: string, value: any) => {
+    console.log(typeof value);
+    const updatedExperience = [...experienceData];
+    updatedExperience[index] = { ...updatedExperience[index], [field]: value };
+    setExperienceData(updatedExperience);
+    const updatedresumeData = { ...resumeData, experience: updatedExperience };
+    console.log(updatedresumeData);
+    setResumeData(updatedresumeData);
+  };
+
+  const handleAddExperience = () => {
+    setExperienceData([
+      ...experienceData,
+      {
+        company: "",
+        description: "",
+        startDate: "",
+        endDate: "",
+      },
+    ]);
+  };
+
   // project functions
   const [projectData, setProjectData] = useState<ProjectData[]>([]);
 
@@ -87,7 +114,7 @@ const Home = () => {
   };
 
   const [count, setCount] = useState<number>(0);
-  const cards = ["profile", "education", "skills", "project"];
+  const cards = ["profile", "education", "experience", "skills", "project"];
 
   const renderPage = () => {
     switch (cards[count]) {
@@ -99,6 +126,14 @@ const Home = () => {
             handleAddEducation={handleAddEducation}
             handleEducationChange={handleEducationChange}
             educationData={educationData}
+          />
+        );
+      case "experience":
+        return (
+          <ExperienceForm
+            handleAddExperience={handleAddExperience}
+            handleExperienceChange={handleExperienceChange}
+            experienceData={experienceData}
           />
         );
       case "skills":
