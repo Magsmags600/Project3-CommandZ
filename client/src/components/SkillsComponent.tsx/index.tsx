@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
-import type { SkillsData } from '../../interfaces/index';
-
-
+import React, { useState } from "react";
+import type { SkillsData } from "../../interfaces/index";
 
 const SkillsForm: React.FC = () => {
   const [skillsData, setSkillsData] = useState<SkillsData>({
-    skills: '',
+    skills: "",
   });
 
   const handleSkillsChange = (field: string, value: any) => {
@@ -27,16 +25,13 @@ const SkillsForm: React.FC = () => {
                   type="text"
                   className="form-control"
                   value={skillsData.skills}
-                  onChange={(e) => handleSkillsChange('skills', e.target.value)}
+                  onChange={(e) => handleSkillsChange("skills", e.target.value)}
                 />
               </div>
             </div>
           </div>
         </div>
-
       </div>
-
-    
     </div>
   );
 };
