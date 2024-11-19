@@ -96,7 +96,13 @@ Have a high-quality README (with unique name, description, technologies used, sc
 ## ADD SECTION 
 - DEPLOYED URL:
 - GITHUB URL: https://github.com/Magsmags600/Project3-CommandZ
-- SCREEN SHOTS:
+- SCREEN SHOTS: 
+- ![alt text](./server/assets/Screenshot%202024-11-19%20130626.png)
+- ![alt text](./server/assets/Screenshot%202024-11-19%20130710.png)
+- ![alt text](./server/assets/Screenshot%202024-11-19%20130739.png)
+- ![alt text](./server/assets/Screenshot%202024-11-19%20at%201.07.03 PM.png)
+- ![alt text](./server/assets/Screenshot%202024-11-19%20at%201.10.14 PM.png)
+
 ## Questions
 - 🖍️[GitHub]🖍️: (https://github.com/keenanmaupin) | (https://github.com/HappyPup1402) |(https://github.com/Jaggz) | (https://github.com/magsmags600) | (https://github.com/balshersran)
 
