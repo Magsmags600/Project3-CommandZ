@@ -5,6 +5,9 @@ import EducationForm from "../components/EducationComponent";
 import ProjectForm from "../components/ProjectComponent";
 import SkillsForm from "../components/SkillsComponent.tsx";
 import ExperienceForm from "../components/ExperienceComponent/index.tsx";
+import SaveResume from "../components/SaveResumeComponent/index.tsx";
+// import { ADD_RESUME } from "../utils/mutations.ts";
+// import { useMutation } from "@apollo/client";
 import {
   ResumeData,
   EducationData,
@@ -17,6 +20,7 @@ import {
 const Home = () => {
   // const { loading, data } = useQuery(QUERY_PROFILES);
   // const profiles = data?.profiles || [];
+  // const [addResume] = useMutation(ADD_RESUME);
   const [resumeData, setResumeData] = useState({} as ResumeData);
   const [educationData, setEducationData] = useState<EducationData[]>([]);
   // education functions
@@ -122,9 +126,20 @@ const Home = () => {
     setProfileData({ ...profileData, [field]: value });
     setResumeData({ ...resumeData,name:profileData.name ,email:profileData.email,address:profileData.address,phone:profileData.phone })
   };
+  const saveResumeData = () =>{
+    console.log(resumeData);
+    // try{
+    //   await addResume({
+    //     variables:{...resumeData}
+    //   })
+    // }catch(err){
+    //   console.error(err);
+    // }
+
+  }
 
   const [count, setCount] = useState<number>(0);
-  const cards = ["profile", "education", "experience", "skills", "project"];
+  const cards = ["profile", "education", "experience", "skills", "project",'SaveResume'];
 
   const renderPage = () => {
     switch (cards[count]) {
@@ -162,8 +177,12 @@ const Home = () => {
             projectData={projectData}
           />
         );
-      default:
-        return <ProfileForm />;
+      case "SaveResume":
+        return (
+              <SaveResume saveResumeData={saveResumeData}/>
+        );
+      // default:
+      //   return <ProfileForm />;
     }
   };
 
