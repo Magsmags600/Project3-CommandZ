@@ -8,9 +8,10 @@ const Header: React.FC = () => {
   return (
     <header className="header-container">
       <Link to="/" className="logo">
-        Logo
+        <img src="../assets/CareerSparkLogo1.png" alt="Logo" />
       </Link>
       <nav className="nav-links">
+
 
         {Auth.loggedIn() ? (
           <>
@@ -24,6 +25,7 @@ const Header: React.FC = () => {
             <Link to="/signup" className="nav-link">SignUP</Link>
           </>
         )}
+
 
       </nav>
     </header>

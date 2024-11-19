@@ -9,11 +9,16 @@
   }
   
   .logo {
-    font-size: 2rem; /* Larger font size for the logo */
-    font-weight: bold;
-    color: #8ecae6; /* Logo text color */
+    display: flex;
+    align-items: center;
     text-decoration: none;
-  }
+}
+
+.logo img {
+    width: 175px; /* Adjust the width of the image */
+    height: auto; /* Maintain aspect ratio */
+}
+
   
   .nav-links {
     display: flex;
