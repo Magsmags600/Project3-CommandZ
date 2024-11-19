@@ -58,3 +58,11 @@
   .profile-form textarea {
     border-radius: 8px;
   }
+
+  * .btn-info[data-count|="0"] {
+    display:none
+  }
+
+  * .btn-success[data-count|="5"] {
+    display:none
+  }
