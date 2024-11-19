@@ -4,8 +4,8 @@ interface IProjects extends Document {
     projectsId:ObjectId;
     title: String,
     description: String,
-    startDate: Date,
-    endDate: Date,
+    startDate: String,
+    endDate: String,
 }
 
 const projectsSchema = new Schema<IProjects>(
@@ -20,12 +20,12 @@ const projectsSchema = new Schema<IProjects>(
       maxlength: 25,
     },
     startDate: {
-      type: Date,
-      default: Date.now,
+      type: String,
+      // default: Date.now,
     },
     endDate: {
-        type: Date,
-        default: Date.now,
+        type: String,
+        // default: Date.now,
         
       },
       description: {

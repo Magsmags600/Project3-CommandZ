@@ -1,5 +1,6 @@
 export default interface ProjectData {
-    projectsId:string;
+
+    projectsId: string;
     title: string;
     description: string;
     startDate: string;

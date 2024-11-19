@@ -2,11 +2,14 @@
 
 .profile-form {
     font-family: Arial, sans-serif;
+    text-align: center;
   }
   
   .profile-form .card {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border: none;
+    display: flex;
+    justify-content: center;
   }
   
   .profile-form .card-title {
@@ -25,4 +28,6 @@
   .profile-form textarea {
     border-radius: 8px;
   }
+
+
   
