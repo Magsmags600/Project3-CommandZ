@@ -1,7 +1,7 @@
 import { Schema, Types, Document, ObjectId } from 'mongoose';
 
 interface IProjects extends Document { 
-    projectsId:ObjectId;
+    projectsId?:ObjectId;
     title: String,
     description: String,
     startDate: String,

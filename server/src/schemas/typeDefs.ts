@@ -29,11 +29,13 @@ const typeDefs = `
     _id: ID!
     name: String!
     email: String!
+    address:String!
+    phone:String!
     education: [Education!]!
     experiences: [Experience!]!
     projects: [Project!]!
     skills: [Skills!]!
-    contacts: [String!]!
+    contacts: [String]
   }
 
   type Education {
@@ -66,7 +68,7 @@ const typeDefs = `
 
 
   input EducationInput {
-    educationId: ID!
+    
     institution: String!
     degree: String!
     fieldOfStudy: String!
@@ -75,7 +77,7 @@ const typeDefs = `
   }
 
   input ProjectInput {
-    projectsId: ID!
+    
     title: String!
     description: String!
     startDate: String!
@@ -85,11 +87,13 @@ const typeDefs = `
   input GenerateResumeInput {
     name: String!
     email: String!
+    address:String!
+    phone:String!
     education: [EducationInput!]!
     experiences: [ExperienceInput!]!
     projects: [ProjectInput!]!
     skills: [SkillsInput!]!
-    contacts: [String!]!
+    contacts: [String]
   }
 
   type Mutation {
@@ -99,12 +103,14 @@ const typeDefs = `
     addResume(
       name: String!, 
       email: String!, 
+      address:String!,
+      phone:String!,
       education: [EducationInput!]!, 
       experiences: [ExperienceInput!]!, 
       projects: [ProjectInput!]!, 
       skills: [SkillsInput!]!, 
-      contacts: [String!]!
-    ): User!
+      contacts: [String]
+    ): Resume!
 
     updateUser(
       _id: ID!, 

@@ -8,6 +8,8 @@ interface IResume extends Document {
   _id: string;
   name: string;
   email: string;
+  address:string;
+  phone:string;
   education: typeof Education[];
   experiences: typeof Experience[];
   projects: typeof Projects[];
@@ -36,6 +38,16 @@ const resumeSchema = new Schema<IResume>(
       unique: true,
       trim: true,
     },
+    address: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     email: {
       type: String,
       required: true,
@@ -43,7 +55,6 @@ const resumeSchema = new Schema<IResume>(
       match: [/.+@.+\..+/, 'Must match an email address!'],
     },
 
-    skills: [Skills],
     education: [Education],
     projects: [Projects],
     contacts: [
@@ -53,6 +64,7 @@ const resumeSchema = new Schema<IResume>(
       }
     ],
     experiences: [Experience],
+    skills: [Skills],
   },
   {
     timestamps: true,
@@ -102,7 +114,7 @@ const hashPassword = async function (this: any, next: any) {
   next();
 };
 
-resumeSchema.pre<IResume>('save', hashPassword);
+// resumeSchema.pre<IResume>('save', hashPassword);
 userSchema.pre<IUser>('save', hashPassword);
 
 // Method to compare passwords for both schemas

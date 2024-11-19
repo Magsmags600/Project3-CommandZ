@@ -25,6 +25,8 @@ interface Resume {
   _id: string;
   name: string;
   email: string;
+  address:string;
+  phone:string;
   education: typeof Education[];
   experiences: typeof Experience[];
   projects: typeof Projects[];
@@ -41,6 +43,8 @@ interface AddUserArgs {
 interface AddResumeArgs {
   name: string;
   email: string;
+  address:string;
+  phone:string;
   education:typeof Education[];
   experiences:typeof Experience[];
   projects: typeof Projects[];
@@ -98,10 +102,10 @@ const resolvers = {
       return { token, profile: user };
     },
 
-    addResume: async (_: unknown, { name, email, education, experiences, projects, skills, contacts }: AddResumeArgs,context:any): Promise<Resume> => {
+    addResume: async (_: unknown, { name, email,address,phone, education, experiences, projects, skills, contacts }: AddResumeArgs,context:any): Promise<Resume> => {
       if (context.user) {
        
-        const resume = await Resume.create({ name, email, education, experiences, projects, skills, contacts });
+        const resume = await Resume.create({ name, email,address,phone, education, experiences, projects, skills, contacts });
 
         //  const user =
           await User.findOneAndUpdate(

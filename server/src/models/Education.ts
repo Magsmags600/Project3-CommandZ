@@ -1,7 +1,7 @@
 import { Schema, Types, Document, ObjectId } from 'mongoose';
 
 interface IEducation extends Document { 
-    educationId: ObjectId;
+    educationId?: ObjectId;
     institution: string;
     degree: string;
     fieldOfStudy: string;
