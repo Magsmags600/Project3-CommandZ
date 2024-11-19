@@ -1,5 +1,4 @@
 
-import { useState } from "react";
 import ProjectData from "../../interfaces/ProjectData";
 import './project.css';
 
@@ -59,33 +58,7 @@ const ProjectForm = (props:ProjectProps) => {
                   props.handleProjectChange(index, "endDate", e.target.value)
                 }
               />
-              <input
-                type="text"
-                placeholder="Project Description"
-                className="form-control mb-2"
-                value={proj.description}
-                onChange={(e) =>
-                  handleProjectChange(index, "description", e.target.value)
-                }
-                />
-                <input
-                type="date"
-                placeholder="Project Start Date"
-                className="form-control mb-2"
-                value={proj.startDate}
-                onChange={(e) =>
-                  handleProjectChange(index, "startDate", e.target.value)
-                }
-                />
-                <input
-                type="date"
-                placeholder="Project End date"
-                className="form-control mb-2"
-                value={proj.endDate}
-                onChange={(e) =>
-                  handleProjectChange(index, "description", e.target.value)
-                }
-                />
+ 
               {/* Other inputs for description, startDate, etc. */}
             </div>
           ))}
