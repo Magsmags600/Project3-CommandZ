@@ -1,27 +1,12 @@
-import { useState } from "react";
+
 import ProjectData from "../../interfaces/ProjectData";
 
-const ProjectForm: React.FC = () => {
-  const [projectData, setProjectData] = useState<ProjectData[]>([]);
-
-  const handleProjectChange = (index: number, field: string, value: any) => {
-    const updatedProjects = [...projectData];
-    updatedProjects[index] = { ...updatedProjects[index], [field]: value };
-    setProjectData(updatedProjects);
-  };
-
-  const handleAddProject = () => {
-    setProjectData([
-      ...projectData,
-      {
-        projectsId: Date.now().toString(),
-        title: "",
-        description: "",
-        startDate: new Date(),
-        endDate: new Date(),
-      },
-    ]);
-  };
+interface ProjectProps{
+  projectData:ProjectData[],
+  handleAddProject:()=>void,
+  handleProjectChange:(index: number, field: string, value: any) =>void
+}
+const ProjectForm = (props:ProjectProps) => {
 
   return (
     <div className="project-form">
@@ -29,7 +14,7 @@ const ProjectForm: React.FC = () => {
       <div className="card">
         <div className="card-body">
           <h5 className="card-title">Project Data</h5>
-          {projectData.map((proj, index) => (
+          {props.projectData.map((proj:any, index:any) => (
             <div key={proj.projectsId} className="mb-3">
               <input
                 type="text"
@@ -37,13 +22,40 @@ const ProjectForm: React.FC = () => {
                 className="form-control mb-2"
                 value={proj.title}
                 onChange={(e) =>
-                  handleProjectChange(index, "title", e.target.value)
+                  props.handleProjectChange(index, "title", e.target.value)
+                }
+              />
+              <input
+                type="text"
+                placeholder="Description"
+                className="form-control mb-2"
+                value={proj.description}
+                onChange={(e) =>
+                  props.handleProjectChange(index, "description", e.target.value)
+                }
+              />
+              <input
+                type="date"
+                placeholder="Start Date"
+                className="form-control mb-2"
+                value={proj.startDate}
+                onChange={(e) =>
+                  props.handleProjectChange(index, "startDate", e.target.value)
+                }
+              />
+              <input
+                type="date"
+                placeholder="End Date"
+                className="form-control mb-2"
+                value={proj.endDate}
+                onChange={(e) =>
+                  props.handleProjectChange(index, "endDate", e.target.value)
                 }
               />
               {/* Other inputs for description, startDate, etc. */}
             </div>
           ))}
-          <button className="btn btn-primary" onClick={handleAddProject}>
+          <button className="btn btn-primary" onClick={()=>props.handleAddProject()}>
             Add Project
           </button>
         </div>

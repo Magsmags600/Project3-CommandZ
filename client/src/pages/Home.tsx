@@ -3,30 +3,83 @@ import { useState } from "react";
 import ProfileForm from "../components/ProfileForm";
 import EducationForm from "../components/EducationComponent";
 import ProjectForm from "../components/ProjectComponent";
-// import ProfileList from '../components/ProfileList';
+import { ResumeData ,EducationData,ProjectData} from "../interfaces";
 
-// import { QUERY_PROFILES } from '../utils/queries';
 const Home = () => {
   // const { loading, data } = useQuery(QUERY_PROFILES);
   // const profiles = data?.profiles || [];
+  const [resumeData,setResumeData] = useState({}as ResumeData);
+  const [educationData, setEducationData] = useState<EducationData[]>([]);
+// education functions
+  const handleEducationChange = (index: number, field: string, value: any) => {
+    console.log(typeof value);
+    const updatedEducation = [...educationData];
+    updatedEducation[index] = { ...updatedEducation[index], [field]:value };
+    setEducationData(updatedEducation);
+    const updatedresumeData = { ...resumeData, education: updatedEducation }
+    console.log(updatedresumeData);
+    setResumeData(updatedresumeData);
+ 
+  };
+
+  const handleAddEducation = () => {
+    setEducationData([
+      ...educationData,
+      {
+        educationId: Date.now().toString(),
+        institution: "",
+        degree: "",
+        fieldOfStudy: "",
+        startDate: '',
+        endDate: '',
+      },
+    ]);
+
+  };
+  // project functions
+  const [projectData, setProjectData] = useState<ProjectData[]>([]);
+
+  const handleProjectChange = (index: number, field: string, value: any) => {
+    const updatedProjects = [...projectData];
+    updatedProjects[index] = { ...updatedProjects[index], [field]: value };
+    setProjectData(updatedProjects);
+    const updatedresumeData = { ...resumeData, projects: updatedProjects }
+    console.log(updatedresumeData);
+    setResumeData(updatedresumeData);
+    
+  };
+
+  const handleAddProject = () => {
+    setProjectData([
+      ...projectData,
+      {
+        projectsId: Date.now().toString(),
+        title: "",
+        description: "",
+        startDate: '',
+        endDate: '',
+      },
+    ]);
+  };
   const [count, setCount] = useState<number>(0);
   const cards = ['profile', 'education', 'skills', 'project'];
+
   const renderPage = () => {
     switch (cards[count]) {
       case "profile":
         return <ProfileForm />;
       case "education":
-        return <EducationForm />;
+        return <EducationForm handleAddEducation={handleAddEducation} handleEducationChange={handleEducationChange} educationData={educationData} />;
       case "skills":
         return '<skills />';
       case "project":
-        return <ProjectForm />;
+        return <ProjectForm handleAddProject={handleAddProject} handleProjectChange={handleProjectChange} projectData={projectData}/>;
       default:
         return '<h1>404 Page Not Found</h1>';
     }
   }
 
-  // Function to increment the count
+  // Function to increment the count fro next step
   const increment = () => {
     if (count < cards.length - 1) {
 
@@ -34,7 +87,7 @@ const Home = () => {
     }
   };
 
-  // Function to decrement the count
+  // Function to decrement the count fro previous step
   const decrement = () => {
 
     if (count > 0) {
