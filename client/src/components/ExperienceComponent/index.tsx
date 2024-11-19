@@ -17,7 +17,7 @@ const ExperienceForm: React.FC = () => {
     <div className="container profile-form my-5">
       <h1 className="text-center mb-4">Experience Form</h1>
       <div className="row">
-        {/* User Data Card */}
+        {/* Experience Data Card */}
         <div className="col-md-6 mb-4">
           <div className="card">
             <div className="card-body">
