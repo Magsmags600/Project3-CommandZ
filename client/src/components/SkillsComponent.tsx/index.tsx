@@ -1,42 +1,42 @@
-import React, { useState } from 'react';
-import type { SkillsData } from '../../interfaces/index';
+import SkillsData from "../../interfaces/SkillsData";
+import "./skills.css";
 
-
-
-const SkillsForm: React.FC = () => {
-  const [skillsData, setSkillsData] = useState<SkillsData>({
-    skills: '',
-  });
-
-  const handleSkillsChange = (field: string, value: any) => {
-    setSkillsData({ ...skillsData, [field]: value });
-  };
-
+interface SkillsProps {
+  skillsData: SkillsData[];
+  handleAddSkill: () => void;
+  handleSkillsChange: (index: number, field: string, value: any) => void;
+}
+const SkillsForm = (props: SkillsProps) => {
   return (
-    <div className="container profile-form my-5">
-      <h1 className="text-center mb-4">Skills Form</h1>
-      <div className="row">
-        {/* Skills Data Card */}
-        <div className="col-md-6 mb-4">
-          <div className="card">
-            <div className="card-body">
-              <h5 className="card-title">Skills Data</h5>
-              <div className="mb-3">
-                <label className="form-label">Skills</label>
+    <div className="skills-form">
+      <div className="col-md-6 mb-4">
+        <div className="card">
+          <div className="card-body">
+            <h5 className="card-title">Skills Data</h5>
+            {props.skillsData.map((skills: any, index: any) => (
+              <div key={skills.skillsId} className="mb-3">
+                <label className="form-label">Skills: </label>
                 <input
                   type="text"
-                  className="form-control"
-                  value={skillsData.skills}
-                  onChange={(e) => handleSkillsChange('skills', e.target.value)}
+                  placeholder="Skills"
+                  className="form-control mb-2"
+                  value={skills.skills}
+                  onChange={(e) =>
+                    props.handleSkillsChange(index, "skills", e.target.value)
+                  }
                 />
+                {/* Other inputs for description, startDate, etc. */}
               </div>
-            </div>
+            ))}
+            <button
+              className="btn btn-primary"
+              onClick={() => props.handleAddSkill()}
+            >
+              Add Skills
+            </button>
           </div>
         </div>
-
       </div>
-
-    
     </div>
   );
 };

@@ -1,0 +1,27 @@
+.skills-form {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  .skills-form .card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+  }
+  
+  .skills-form .card-title {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .skills-form .form-label {
+    font-weight: 500;
+  }
+  
+  .skills-form input {
+    border-radius: 8px;
+  }
+  
+  .skills-form textarea {
+    border-radius: 8px;
+  }
+  
