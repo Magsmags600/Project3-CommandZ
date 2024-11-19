@@ -213,7 +213,9 @@ const Home = () => {
               className="col-6 col-md-10 my-3 float-left "
               style={{ float: "left" }}
             >
+
               <button data-count={count} className="btn btn-info" onClick={decrement}>
+
                 PREVIOUS
               </button>
             </div>
@@ -221,7 +223,11 @@ const Home = () => {
               className="col-6 col-md-10 my-3 float-right"
               style={{ float: "right" }}
             >
+
+
+             
               <button data-count={count} className="btn btn-success" onClick={increment}>
+
                 NEXT
               </button>
             </div>
