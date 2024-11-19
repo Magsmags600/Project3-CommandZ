@@ -1,7 +1,8 @@
-import EducationData from "./EducationData";
-import ProjectData from "./ProjectData";
-import ResumeData from "./ResumeData";
-import User from "./User";
-import ExperienceData from "./ExperienceData";
+import  EducationData  from "./EducationData";
+import  ProjectData  from "./ProjectData";
+import ResumeData  from "./ResumeData";
+import  User  from "./User";
+import ProfileData from "./ProfileData";
 import SkillsData from "./SkillsData";
-export type { EducationData, ProjectData, User, ResumeData, ExperienceData, SkillsData };
+import ExperienceData from "./ExperienceData";
+export type {EducationData,ProjectData,User,ResumeData,ProfileData,SkillsData,ExperienceData};
