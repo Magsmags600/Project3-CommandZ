@@ -75,7 +75,7 @@ const Home = () => {
       case "project":
         return <ProjectForm handleAddProject={handleAddProject} handleProjectChange={handleProjectChange} projectData={projectData}/>;
       default:
-        return '<h1>404 Page Not Found</h1>';
+        return <ProfileForm />;
     }
   }
 
