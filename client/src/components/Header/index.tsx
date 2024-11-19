@@ -16,6 +16,7 @@ const Header: React.FC = () => {
           <>
             <Link to="/home" className="nav-link">Home</Link>
             <Link to="/myresumes" className="nav-link">MyResumes</Link>
+            <Link to="/" className="nav-link" onClick={Auth.logout}>LogOut</Link>
           </>
         ) : (
           <>
