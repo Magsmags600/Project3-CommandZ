@@ -18,8 +18,8 @@ const ProjectForm: React.FC = () => {
         projectsId: Date.now().toString(),
         title: "",
         description: "",
-        startDate: new Date(),
-        endDate: new Date(),
+        startDate: "",
+        endDate: "",
       },
     ]);
   };
@@ -54,7 +54,7 @@ const ProjectForm: React.FC = () => {
                 type="date"
                 placeholder="Project Start Date"
                 className="form-control mb-2"
-                value="startDate"
+                value={proj.startDate}
                 onChange={(e) =>
                   handleProjectChange(index, "startDate", e.target.value)
                 }
@@ -63,7 +63,7 @@ const ProjectForm: React.FC = () => {
                 type="date"
                 placeholder="Project End date"
                 className="form-control mb-2"
-                value={proj.description}
+                value={proj.endDate}
                 onChange={(e) =>
                   handleProjectChange(index, "description", e.target.value)
                 }
