@@ -1,56 +1,46 @@
 // import { useState } from "react";
-import EducationData from "../../interfaces/EducationData";
-import "./education.css";
+import ExperienceData from "../../interfaces/ExperienceData";
+import "./exprience.css";
 
-interface EducationProps {
-  educationData: EducationData[];
-  handleAddEducation: () => void;
-  handleEducationChange: (index: number, field: string, value: any) => void;
+interface ExperienceProps {
+  experienceData: ExperienceData[];
+  handleAddExperience: () => void;
+  handleExperienceChange: (index: number, field: string, value: any) => void;
 }
-const EducationForm = (props: EducationProps) => {
+const ExperienceForm = (props: ExperienceProps) => {
   return (
-    <div className="ed-form">
-      {/* Education Data Card */}
+    <div className="exp-form">
+      {/* Experience Data Card */}
       <div className="col-md-6 mb-4">
         <div className="card">
           <div className="card-body">
-            <h5 className="card-title">Education Data</h5>
-            {props.educationData.map((edu: any, index: number) => (
-              <div key={edu.educationId} className="mb-3">
-                <label className="form-label">Institution: </label>
+            <h5 className="card-title">Experience Data</h5>
+            {props.experienceData.map((exp: any, index: number) => (
+              <div key={index} className="mb-3">
+                <label className="form-label">Company Name: </label>
                 <input
                   type="text"
-                  placeholder="Institution"
+                  placeholder="Company Name"
                   className="form-control mb-2"
-                  value={edu.institution}
+                  value={exp.company}
                   onChange={(e) =>
-                    props.handleEducationChange(
+                    props.handleExperienceChange(
                       index,
-                      "institution",
+                      "company",
                       e.target.value
                     )
                   }
                 />
-                <label className="form-label">Degree: </label>
+                <label className="form-label">Description: </label>
                 <input
                   type="text"
-                  placeholder="Degree"
+                  placeholder="Description"
                   className="form-control mb-2"
-                  value={edu.degree}
+                  value={exp.description}
                   onChange={(e) =>
-                    props.handleEducationChange(index, "degree", e.target.value)
-                  }
-                />
-                <label className="form-label">Field: </label>
-                <input
-                  type="text"
-                  placeholder="Field Of Study"
-                  className="form-control mb-2"
-                  value={edu.fieldOfStudy}
-                  onChange={(e) =>
-                    props.handleEducationChange(
+                    props.handleExperienceChange(
                       index,
-                      "fieldOfStudy",
+                      "description",
                       e.target.value
                     )
                   }
@@ -60,9 +50,9 @@ const EducationForm = (props: EducationProps) => {
                   type="date"
                   placeholder="Start Date"
                   className="form-control mb-2"
-                  value={edu.startDate}
+                  value={exp.startDate}
                   onChange={(e) =>
-                    props.handleEducationChange(
+                    props.handleExperienceChange(
                       index,
                       "startDate",
                       e.target.value
@@ -74,9 +64,9 @@ const EducationForm = (props: EducationProps) => {
                   type="date"
                   placeholder="End Date"
                   className="form-control mb-2"
-                  value={edu.endDate}
+                  value={exp.endDate}
                   onChange={(e) =>
-                    props.handleEducationChange(
+                    props.handleExperienceChange(
                       index,
                       "endDate",
                       e.target.value
@@ -88,9 +78,9 @@ const EducationForm = (props: EducationProps) => {
             ))}
             <button
               className="btn btn-primary"
-              onClick={() => props.handleAddEducation()}
+              onClick={() => props.handleAddExperience()}
             >
-              Add Education
+              Add Experience
             </button>
           </div>
         </div>
@@ -99,4 +89,4 @@ const EducationForm = (props: EducationProps) => {
   );
 };
 
-export default EducationForm;
+export default ExperienceForm;

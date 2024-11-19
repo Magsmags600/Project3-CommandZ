@@ -13,8 +13,6 @@ interface IResume extends Document {
   skills: string[];
   contacts: string[];
 
-  
-  
 }
 
 // Define an interface for the User document

@@ -9,7 +9,7 @@ import Error from './pages/Error';
 import Legal from './pages/Legal';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
-import Profile from './components/ProfileForm';
+// import Profile from './components/ProfileForm';
 
 const router = createBrowserRouter([
   {
@@ -41,10 +41,10 @@ const router = createBrowserRouter([
         path: '/home',
         element: <Home/>
       },
-      {
-        path: '/profile',
-        element: <Profile/>
-      }
+      // {
+      //   path: '/profile',
+      //   element: <Profile/>
+      // }
     ]
   },
 ]);
