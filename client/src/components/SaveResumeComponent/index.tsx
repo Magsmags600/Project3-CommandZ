@@ -3,8 +3,8 @@
 // import { ResumeData } from "../../interfaces";
 
 interface ResumeProps {
-  
- saveResumeData: () => void
+
+  saveResumeData: () => void
 }
 
 
