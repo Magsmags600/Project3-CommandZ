@@ -1,5 +1,6 @@
 import { useState } from "react";
 import EducationData from "../../interfaces/EducationData";
+import './education.css';
 
 const EducationForm: React.FC = () => {
   const [educationData, setEducationData] = useState<EducationData[]>([]);
@@ -18,8 +19,8 @@ const EducationForm: React.FC = () => {
         institution: "",
         degree: "",
         fieldOfStudy: "",
-        startDate: new Date(),
-        endDate: new Date(),
+        startDate: "",
+        endDate: "",
       },
     ]);
   };
@@ -43,6 +44,42 @@ const EducationForm: React.FC = () => {
                   }
                 />
                 {/* Other inputs for degree, fieldOfStudy, etc. */}
+                < input 
+                    type="text"
+                    placeholder="Degree"
+                    className="form-control mb-2"
+                    value={edu.degree}
+                    onChange={(e) => 
+                      handleEducationChange(index, "degree", e.target.value)
+                    }
+                    />
+                    < input 
+                    type="text"
+                    placeholder="Field of Study"
+                    className="form-control mb-2"
+                    value={edu.fieldOfStudy}
+                    onChange={(e) => 
+                      handleEducationChange(index, "fieldOfStudy", e.target.value)
+                    }
+                    />
+                    < input 
+                    type="date"
+                    placeholder="Start Date"
+                    className="form-control mb-2"
+                    value={edu.startDate}
+                    onChange={(e) => 
+                      handleEducationChange(index, "startDate", e.target.value)
+                    }
+                    />
+                    < input 
+                    type="date"
+                    placeholder="End Date"
+                    className="form-control mb-2"
+                    value={edu.endDate}
+                    onChange={(e) => 
+                      handleEducationChange(index, "endDate", e.target.value)
+                    }
+                    />
               </div>
             ))}
             <button className="btn btn-primary" onClick={handleAddEducation}>
