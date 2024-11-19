@@ -1,10 +1,11 @@
 import dotenv from "dotenv";
 dotenv.config();
-import { User, Resume, Education, Projects } from '../models/index.js';
+import { User, Resume, Education, Projects,Experience ,Skills} from '../models/index.js';
 import { signToken, AuthenticationError} from '../utils/auth.js';
 import OpenAI from 'openai';
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 import * as fs from "fs";
+
 
 // Initialize OpenAI client with the API key
 const openai = new OpenAI({
@@ -25,9 +26,9 @@ interface Resume {
   name: string;
   email: string;
   education: typeof Education[];
-  experiences: string[];
+  experiences: typeof Experience[];
   projects: typeof Projects[];
-  skills: string[];
+  skills: typeof Skills[];
   contacts: string[];
 }
 
@@ -40,10 +41,10 @@ interface AddUserArgs {
 interface AddResumeArgs {
   name: string;
   email: string;
-  education: string[];
-  experiences: string[];
-  projects: string[];
-  skills: string[];
+  education:typeof Education[];
+  experiences:typeof Experience[];
+  projects: typeof Projects[];
+  skills: typeof Skills[];
   contacts: string[];
 }
 
@@ -59,10 +60,10 @@ interface GenerateResume {
   input: {
     name: string;
     email: string;
-    education: string[];
-    experiences: string[];
-    projects: string[];
-    skills: string[];
+    education:typeof Education[];
+    experiences:typeof Experience[];
+    projects: typeof Projects[];
+    skills: typeof Skills[];
     contacts: string[];
   }
 }
@@ -102,8 +103,8 @@ const resolvers = {
        
         const resume = await Resume.create({ name, email, education, experiences, projects, skills, contacts });
 
-        // const user = 
-        await User.findOneAndUpdate(
+        //  const user =
+          await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { resume: resume._id } },
           {new:true}

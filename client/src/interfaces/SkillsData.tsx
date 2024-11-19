@@ -1,4 +1,4 @@
 export default interface SkillsData {
-    skillsId: string;
+    // skillsId: string;
     skills: string;
 }

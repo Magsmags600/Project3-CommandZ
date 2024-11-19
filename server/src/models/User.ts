@@ -1,19 +1,21 @@
+import { Experience ,Projects,Education,Skills} from './index.js';
 import { Schema, model, Document} from 'mongoose';
 import bcrypt from 'bcrypt';
-import Education from './Education.js';
-import Projects from './Projects.js';
+// import Education from './Education.js';
+// import Projects from './Projects.js';
 //interface for the Resume document
 interface IResume extends Document {
   _id: string;
   name: string;
   email: string;
   education: typeof Education[];
-  experiences: string[];
+  experiences: typeof Experience[];
   projects: typeof Projects[];
-  skills: string[];
+  skills: typeof Skills[];
   contacts: string[];
 
 }
+
 
 // Define an interface for the User document
 interface IUser extends Document {
@@ -41,12 +43,7 @@ const resumeSchema = new Schema<IResume>(
       match: [/.+@.+\..+/, 'Must match an email address!'],
     },
 
-    skills: [
-      {
-        type: String,
-        trim: true,
-      },
-    ],
+    skills: [Skills],
     education: [Education],
     projects: [Projects],
     contacts: [
@@ -55,12 +52,7 @@ const resumeSchema = new Schema<IResume>(
         trim: true,
       }
     ],
-    experiences: [
-      {
-        type: String,
-        trim: true,
-      },
-    ],
+    experiences: [Experience],
   },
   {
     timestamps: true,

@@ -11,15 +11,28 @@ const typeDefs = `
     email: String!
     resume: [Resume!]!
   }
+  type Experience{
+    company: String!
+    description: String!
+    startDate: String!
+    endDate: String!
+  }
+
+  type Skills{
+    skills:String!
+  }
+  input SkillsInput{
+    skills:String!
+  }
 
   type Resume {
     _id: ID!
     name: String!
     email: String!
     education: [Education!]!
-    experiences: [String!]!
+    experiences: [Experience!]!
     projects: [Project!]!
-    skills: [String!]!
+    skills: [Skills!]!
     contacts: [String!]!
   }
 
@@ -44,6 +57,12 @@ const typeDefs = `
     # 1. Get user by ID
     getUserById(_id: ID!): User
   }
+  input ExperienceInput{
+    company: String!
+    description: String!
+    startDate: String!
+    endDate: String!
+  }
 
 
   input EducationInput {
@@ -67,9 +86,9 @@ const typeDefs = `
     name: String!
     email: String!
     education: [EducationInput!]!
-    experiences: [String!]!
+    experiences: [ExperienceInput!]!
     projects: [ProjectInput!]!
-    skills: [String!]!
+    skills: [SkillsInput!]!
     contacts: [String!]!
   }
 
@@ -81,11 +100,11 @@ const typeDefs = `
       name: String!, 
       email: String!, 
       education: [EducationInput!]!, 
-      experiences: [String!]!, 
+      experiences: [ExperienceInput!]!, 
       projects: [ProjectInput!]!, 
-      skills: [String!]!, 
+      skills: [SkillsInput!]!, 
       contacts: [String!]!
-    ): Resume!
+    ): User!
 
     updateUser(
       _id: ID!, 

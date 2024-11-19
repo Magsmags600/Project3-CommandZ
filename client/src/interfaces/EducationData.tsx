@@ -1,7 +1,7 @@
  
 
     export default interface EducationData {
-        educationId: string;
+        // educationId: string;
         institution: string;
         degree: string;
         fieldOfStudy: string;
