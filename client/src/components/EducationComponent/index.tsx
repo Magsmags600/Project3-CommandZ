@@ -1,29 +1,18 @@
+
 import { useState } from "react";
 import EducationData from "../../interfaces/EducationData";
 import './education.css';
 
-const EducationForm: React.FC = () => {
-  const [educationData, setEducationData] = useState<EducationData[]>([]);
 
-  const handleEducationChange = (index: number, field: string, value: any) => {
-    const updatedEducation = [...educationData];
-    updatedEducation[index] = { ...updatedEducation[index], [field]: value };
-    setEducationData(updatedEducation);
-  };
 
-  const handleAddEducation = () => {
-    setEducationData([
-      ...educationData,
-      {
-        educationId: Date.now().toString(),
-        institution: "",
-        degree: "",
-        fieldOfStudy: "",
-        startDate: "",
-        endDate: "",
-      },
-    ]);
-  };
+interface EducationProps{
+  educationData:EducationData[],
+  handleAddEducation:()=>void,
+  handleEducationChange:(index: number, field: string, value: any) =>void
+}
+const EducationForm = (props:EducationProps) => {
+
+
 
   return (
     <div className="ed-form">
@@ -32,7 +21,7 @@ const EducationForm: React.FC = () => {
         <div className="card">
           <div className="card-body">
             <h5 className="card-title">Education Data</h5>
-            {educationData.map((edu, index) => (
+            {props.educationData.map((edu:any, index:number) => (
               <div key={edu.educationId} className="mb-3">
                 <input
                   type="text"
@@ -40,7 +29,43 @@ const EducationForm: React.FC = () => {
                   className="form-control mb-2"
                   value={edu.institution}
                   onChange={(e) =>
-                    handleEducationChange(index, "institution", e.target.value)
+                    props.handleEducationChange(index, "institution", e.target.value)
+                  }
+                />
+                <input
+                  type="text"
+                  placeholder="Degree"
+                  className="form-control mb-2"
+                  value={edu.degree}
+                  onChange={(e) =>
+                    props.handleEducationChange(index, "degree", e.target.value)
+                  }
+                />
+                <input
+                  type="text"
+                  placeholder="Field Of Study"
+                  className="form-control mb-2"
+                  value={edu.fieldOfStudy}
+                  onChange={(e) =>
+                    props.handleEducationChange(index, "fieldOfStudy", e.target.value)
+                  }
+                />
+                <input
+                  type="date"
+                  placeholder="Start Date"
+                  className="form-control mb-2"
+                  value={edu.startDate}
+                  onChange={(e) =>
+                    props.handleEducationChange(index, "startDate", e.target.value)
+                  }
+                />
+                <input
+                  type="date"
+                  placeholder="End Date"
+                  className="form-control mb-2"
+                  value={edu.endDate}
+                  onChange={(e) =>
+                    props.handleEducationChange(index, "endDate", e.target.value)
                   }
                 />
                 {/* Other inputs for degree, fieldOfStudy, etc. */}
@@ -81,8 +106,10 @@ const EducationForm: React.FC = () => {
                     }
                     />
               </div>
+              
+              
             ))}
-            <button className="btn btn-primary" onClick={handleAddEducation}>
+            <button className="btn btn-primary" onClick={()=>props.handleAddEducation()}>
               Add Education
             </button>
           </div>

@@ -10,4 +10,4 @@ export default interface ResumeData {
   projects:  ProjectData[];
   skills: string[];
   contacts: string[];
-  }
+}
