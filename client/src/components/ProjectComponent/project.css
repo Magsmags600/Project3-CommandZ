@@ -1,26 +1,26 @@
 .project-form {
-    font-family: Arial, sans-serif;
-  }
-  
-  .project-form .card {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: none;
-  }
-  
-  .project-form .card-title {
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .project-form .form-label {
-    font-weight: 500;
-  }
-  
-  .project-form input {
-    border-radius: 8px;
-  }
-  
-  .project-form textarea {
-    border-radius: 8px;
-  }
-  
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.project-form .card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+.project-form .card-title {
+  font-weight: bold;
+  color: #333;
+}
+
+.project-form .form-label {
+  font-weight: 500;
+}
+
+.project-form input {
+  border-radius: 8px;
+}
+
+.project-form textarea {
+  border-radius: 8px;
+}

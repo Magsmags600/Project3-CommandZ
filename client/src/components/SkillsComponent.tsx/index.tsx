@@ -1,4 +1,5 @@
 import SkillsData from "../../interfaces/SkillsData";
+import "./skills.css";
 
 interface SkillsProps {
   skillsData: SkillsData[];
@@ -7,13 +8,14 @@ interface SkillsProps {
 }
 const SkillsForm = (props: SkillsProps) => {
   return (
-    <div className="project-form">
+    <div className="skills-form">
       <div className="col-md-6 mb-4">
         <div className="card">
           <div className="card-body">
             <h5 className="card-title">Skills Data</h5>
             {props.skillsData.map((skills: any, index: any) => (
               <div key={skills.skillsId} className="mb-3">
+                <label className="form-label">Skills: </label>
                 <input
                   type="text"
                   placeholder="Skills"
