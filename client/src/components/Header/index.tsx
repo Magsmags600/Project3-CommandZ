@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './header.css';
+import Auth from '../../utils/auth';
 
 const Header: React.FC = () => {
   return (
@@ -10,10 +11,22 @@ const Header: React.FC = () => {
         <img src="../assets/CareerSparkLogo1.png" alt="Logo" />
       </Link>
       <nav className="nav-links">
-        <Link to="/login" className="nav-link">Login</Link>
-        <Link to="/signup" className="nav-link">SignUP</Link>
-        <Link to="/home" className="nav-link">Home</Link>
-        <Link to="/myresumes" className="nav-link">MyResumes</Link>
+
+
+        {Auth.loggedIn() ? (
+          <>
+            <Link to="/home" className="nav-link">Home</Link>
+            <Link to="/myresumes" className="nav-link">MyResumes</Link>
+            <Link to="/" className="nav-link" onClick={Auth.logout}>LogOut</Link>
+          </>
+        ) : (
+          <>
+            <Link to="/login" className="nav-link">Login</Link>
+            <Link to="/signup" className="nav-link">SignUP</Link>
+          </>
+        )}
+
+
       </nav>
     </header>
   );

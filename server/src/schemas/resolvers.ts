@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+dotenv.config();
 import { User, Resume, Education, Projects } from '../models/index.js';
 import { signToken, AuthenticationError} from '../utils/auth.js';
 import OpenAI from 'openai';
@@ -75,7 +77,6 @@ const resolvers = {
 
   Mutation: {
     addUser: async (_: unknown, { username, email, password }: AddUserArgs): Promise< User> => {
-      console.log(username);
       const newUser = await User.create({ username, email, password });
       return newUser;
     },
@@ -96,8 +97,21 @@ const resolvers = {
       return { token, profile: user };
     },
 
-    addResume: async (_: unknown, { name, email, education, experiences, projects, skills, contacts }: AddResumeArgs): Promise<Resume> => {
-      return await Resume.create({ name, email, education, experiences, projects, skills, contacts });
+    addResume: async (_: unknown, { name, email, education, experiences, projects, skills, contacts }: AddResumeArgs,context:any): Promise<Resume> => {
+      if (context.user) {
+       
+        const resume = await Resume.create({ name, email, education, experiences, projects, skills, contacts });
+
+        // const user = 
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { resume: resume._id } },
+          {new:true}
+        );
+
+        return resume;
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
 
     updateUser: async (_: unknown, { _id, username, email, password }: UpdateUserArgs): Promise<User | null> => {
