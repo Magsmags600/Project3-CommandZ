@@ -11,6 +11,7 @@ import {
   ExperienceData,
   ProjectData,
   SkillsData,
+  ProfileData,
 } from "../interfaces";
 
 const Home = () => {
@@ -91,6 +92,8 @@ const Home = () => {
       },
     ]);
   };
+  // skills functions
+
 
   const [skillsData, setSkillsData] = useState<SkillsData[]>([]);
 
@@ -112,6 +115,13 @@ const Home = () => {
       },
     ]);
   };
+  // profiledata functions
+  const [profileData, setProfileData] = useState<ProfileData>({}as ProfileData);
+
+  const handleProfileChange = (field: string, value: any) => {
+    setProfileData({ ...profileData, [field]: value });
+    setResumeData({ ...resumeData,name:profileData.name ,email:profileData.email,address:profileData.address,phone:profileData.phone })
+  };
 
   const [count, setCount] = useState<number>(0);
   const cards = ["profile", "education", "experience", "skills", "project"];
@@ -119,7 +129,7 @@ const Home = () => {
   const renderPage = () => {
     switch (cards[count]) {
       case "profile":
-        return <ProfileForm />;
+        return <ProfileForm handleProfileChange={handleProfileChange} profileData={profileData}/>;
       case "education":
         return (
           <EducationForm
