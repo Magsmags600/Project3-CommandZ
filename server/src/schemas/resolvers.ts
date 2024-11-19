@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+dotenv.config();
 import { User, Resume, Education, Projects } from '../models/index.js';
 import { signToken, AuthenticationError} from '../utils/auth.js';
 import OpenAI from 'openai';
@@ -75,7 +77,6 @@ const resolvers = {
 
   Mutation: {
     addUser: async (_: unknown, { username, email, password }: AddUserArgs): Promise< User> => {
-      console.log(username);
       const newUser = await User.create({ username, email, password });
       return newUser;
     },

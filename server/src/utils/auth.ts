@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import jwt from 'jsonwebtoken';
 import { GraphQLError } from 'graphql';
 
@@ -34,6 +36,7 @@ export const authenticateToken = ({ req }: any) => {
 export const signToken = (username: string, email: string, _id: unknown) => {
   // Create a payload with the user information
   const payload = { username, email, _id };
+  console.log(payload);
   const secretKey: any = process.env.JWT_SECRET_KEY; 
   console.log(secretKey);// Get the secret key from environment variables
 
