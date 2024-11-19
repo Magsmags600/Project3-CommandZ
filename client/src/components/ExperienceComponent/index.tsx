@@ -16,13 +16,13 @@ const ExperienceForm = (props: ExperienceProps) => {
           <div className="card-body">
             <h5 className="card-title">Experience Data</h5>
             {props.experienceData.map((exp: any, index: number) => (
-              <div key={exp.experiencenId} className="mb-3">
+              <div key={index} className="mb-3">
                 <label className="form-label">Company Name: </label>
                 <input
                   type="text"
                   placeholder="Company Name"
                   className="form-control mb-2"
-                  value={exp.institution}
+                  value={exp.company}
                   onChange={(e) =>
                     props.handleExperienceChange(
                       index,
@@ -36,7 +36,7 @@ const ExperienceForm = (props: ExperienceProps) => {
                   type="text"
                   placeholder="Description"
                   className="form-control mb-2"
-                  value={exp.degree}
+                  value={exp.description}
                   onChange={(e) =>
                     props.handleExperienceChange(
                       index,

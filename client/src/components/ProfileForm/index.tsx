@@ -1,19 +1,15 @@
-import React, { useState } from "react";
+
 import "./profile.css";
+import { ProfileData } from "../../interfaces";
 
-import type { User } from "../../interfaces";
+interface ProfileProps {
+  profileData: ProfileData;
+  handleProfileChange: (field: string, value: any) => void
+}
 
-const ProfileForm: React.FC = () => {
-  const [userData, setUserData] = useState<User>({
-    username: "",
-    email: "",
-    password: "",
-    resume: [],
-  });
 
-  const handleUserChange = (field: string, value: any) => {
-    setUserData({ ...userData, [field]: value });
-  };
+const ProfileForm = (props: ProfileProps) => {
+
 
   return (
     <div className="profile-form">
@@ -22,13 +18,13 @@ const ProfileForm: React.FC = () => {
           <div className="card-body">
             <h5 className="card-title">Profile Form</h5>
             <div className="mb-3">
-              <label className="form-label">Username: </label>
+              <label className="form-label">Name: </label>
               <input
                 type="text"
-                placeholder="Username"
+                placeholder="Name"
                 className="form-control"
-                value={userData.username || ""}
-                onChange={(e) => handleUserChange("username", e.target.value)}
+                value={props.profileData.name || ""}
+                onChange={(e) => props.handleProfileChange("name", e.target.value)}
               />
             </div>
             <div className="mb-3">
@@ -37,8 +33,28 @@ const ProfileForm: React.FC = () => {
                 type="email"
                 placeholder="Email"
                 className="form-control"
-                value={userData.email || ""}
-                onChange={(e) => handleUserChange("email", e.target.value)}
+                value={props.profileData.email || ""}
+                onChange={(e) => props.handleProfileChange("email", e.target.value)}
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Address: </label>
+              <input
+                type="text"
+                placeholder="Address"
+                className="form-control"
+                value={props.profileData.address || ""}
+                onChange={(e) => props.handleProfileChange("address", e.target.value)}
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Phone: </label>
+              <input
+                type="text"
+                placeholder="Phone"
+                className="form-control"
+                value={props.profileData.phone || ""}
+                onChange={(e) => props.handleProfileChange("phone", e.target.value)}
               />
             </div>
           </div>
