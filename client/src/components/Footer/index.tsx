@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="footer-container">
       <div className="footer-left">
-        <p>&copy; {new Date().getFullYear()} Tech Friends</p>
+        <p>&copy; {new Date().getFullYear()} CommandZ</p>
       </div>
       <div className="footer-right">
         <Link to="/legal" className="text-white">Legal</Link>

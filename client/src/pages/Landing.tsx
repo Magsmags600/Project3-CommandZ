@@ -13,7 +13,7 @@ const Landing: React.FC = () => {
           <div className="col-md-4">
             <div className="card">
               <div className="card-image-placeholder d-flex justify-content-center align-items-center">
-                <p>Image Placeholder</p>
+              <img src="./assets/AI3.jpg" alt="Placeholder for Easy to Use" className="img-fluid" />
               </div>
               <div className="card-body">
                 <h5 className="card-title">Easy to Use</h5>
@@ -26,7 +26,7 @@ const Landing: React.FC = () => {
           <div className="col-md-4">
             <div className="card">
               <div className="card-image-placeholder d-flex justify-content-center align-items-center">
-                <p>Image Placeholder</p>
+              <img src="./assets/resume.jpg" alt="Placeholder for Easy to Use" className="img-fluid" />
               </div>
               <div className="card-body">
                 <h5 className="card-title">Professional Results</h5>
@@ -39,7 +39,7 @@ const Landing: React.FC = () => {
           <div className="col-md-4">
             <div className="card">
               <div className="card-image-placeholder d-flex justify-content-center align-items-center">
-                <p>Image Placeholder</p>
+              <img src="./assets/CareerSparkLogo1.png" alt="Placeholder for Easy to Use" className="img-fluid" />
               </div>
               <div className="card-body">
                 <h5 className="card-title">Quick and Efficient</h5>
