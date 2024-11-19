@@ -1,14 +1,20 @@
 /* Hero banner styling */
 .hero-banner {
   width: 100%;
-  background-color: #219ebc; /* Background color */
+  background-color: #b9cbcf; /* Background color */
   color: #fb8500; /* Orange text color */
-  padding: 2rem 0;
+  padding: rem 0;
   text-align: center;
   margin: 0;
+  background-image: url('./assets/Spark.jpg'); /* Placeholder for hero background image */
+  background-size: cover; /* Ensure the image covers the entire hero area */
+  background-position: center; /* Center the image */
 }
 
-.hero-banner h1,
+.hero-banner h1 {
+  color: rgb(209, 234, 99);
+}
+
 .hero-banner p {
   margin: 0;
 }

@@ -4,8 +4,8 @@ const Landing: React.FC = () => {
   return (
     <main className="landing-page">
       <section className="hero-banner">
-        <h1>Welcome to the Fabulous Resume Builder</h1>
-        <p>Create a professional resume effortlessly with our easy-to-use platform.</p>
+          <h1>CareerSpark Your Future!</h1>
+        <p>Ignite Your Career with AI-Powered, Effortless Resume Content Creation</p>
       </section>
 
       <section className="container my-5">
@@ -18,7 +18,7 @@ const Landing: React.FC = () => {
               <div className="card-body">
                 <h5 className="card-title">Easy to Use</h5>
                 <p className="card-text">
-                  Enter your skills, experience, and education, and we do the rest.
+                CareerSpark provides AI-generated content, allowing you to effortlessly implement it into your preferred resume template.
                 </p>
               </div>
             </div>
@@ -31,7 +31,7 @@ const Landing: React.FC = () => {
               <div className="card-body">
                 <h5 className="card-title">Professional Results</h5>
                 <p className="card-text">
-                  Get a polished, professional resume that highlights your strengths.
+                Let CareerSpark craft the content you need while you apply it seamlessly to the resume format of your choice.
                 </p>
               </div>
             </div>
@@ -44,7 +44,7 @@ const Landing: React.FC = () => {
               <div className="card-body">
                 <h5 className="card-title">Quick and Efficient</h5>
                 <p className="card-text">
-                  Save time with our quick and efficient resume builder tool.
+                With CareerSpark, you get expertly written content ready to integrate into your favorite resume design.
                 </p>
               </div>
             </div>

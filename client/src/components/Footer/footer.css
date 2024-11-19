@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: #219ebc; /* Or your preferred background color */
+    background: linear-gradient(to right, #d1a563, #599eed); /* Gradient from green to blue */
     color: #ffffff;
   }
   
