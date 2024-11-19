@@ -19,8 +19,8 @@ const EducationForm: React.FC = () => {
         institution: "",
         degree: "",
         fieldOfStudy: "",
-        startDate: new Date(),
-        endDate: new Date(),
+        startDate: "",
+        endDate: "",
       },
     ]);
   };
@@ -66,7 +66,7 @@ const EducationForm: React.FC = () => {
                     type="date"
                     placeholder="Start Date"
                     className="form-control mb-2"
-                    value={edu.degree}
+                    value={edu.startDate}
                     onChange={(e) => 
                       handleEducationChange(index, "startDate", e.target.value)
                     }
@@ -75,7 +75,7 @@ const EducationForm: React.FC = () => {
                     type="date"
                     placeholder="End Date"
                     className="form-control mb-2"
-                    value={edu.degree}
+                    value={edu.endDate}
                     onChange={(e) => 
                       handleEducationChange(index, "endDate", e.target.value)
                     }

@@ -5,8 +5,8 @@ interface IEducation extends Document {
     institution: string;
     degree: string;
     fieldOfStudy: string;
-    startDate: Date;
-    endDate: Date;
+    startDate: string;
+    endDate: string;
 }
 
 const educationSchema = new Schema<IEducation>(
@@ -21,12 +21,12 @@ const educationSchema = new Schema<IEducation>(
       maxlength: 25,
     },
     startDate: {
-      type: Date,
-      default: Date.now,
+      type: String,
+      // default: Date.now,
     },
     endDate: {
-        type: Date,
-        default: Date.now,
+        type: String,
+        // default: Date.now,
         
       },
     degree: {

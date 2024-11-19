@@ -5,6 +5,6 @@
         institution: string;
         degree: string;
         fieldOfStudy: string;
-        startDate: Date;
-        endDate: Date;
+        startDate: string;
+        endDate: string;
     }
