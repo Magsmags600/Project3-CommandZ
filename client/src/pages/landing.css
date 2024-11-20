@@ -1,18 +1,18 @@
 /* Hero banner styling */
 .hero-banner {
   width: 100%;
-  background-color: #b9cbcf; /* Background color */
-  color: #fb8500; /* Orange text color */
+  background-color: #7cc2fa; /* Background color */
+  color: #0c0278; /* Orange text color */
   padding: rem 0;
   text-align: center;
   margin: 0;
-  background-image: url('./assets/Spark.jpg'); /* Placeholder for hero background image */
+  /* background-image: url('./assets/Spark.jpg'); Placeholder for hero background image */
   background-size: cover; /* Ensure the image covers the entire hero area */
   background-position: center; /* Center the image */
 }
 
 .hero-banner h1 {
-  color: rgb(209, 234, 99);
+  color: #0c0278;
 }
 
 .hero-banner p {
@@ -32,7 +32,7 @@
 }
 
 .card {
-  background-color: #8ecae6;
+  background-color:  #7cc2fa;
   border: none;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

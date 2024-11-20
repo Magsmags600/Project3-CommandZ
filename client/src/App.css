@@ -1,12 +1,12 @@
 /* Hero Banner */
 .hero-banner {
   width: 100%;
-  background-color: #b9cbcf; /* Background color */
+  background-color: #599eed; /* Background color */
   color: #fb8500; /* Orange text color */
   padding: 1rem 0; /* Reduced vertical padding */
   text-align: center;
   margin: 0;
-  background-image: url('./assets/Spark.jpg'); /* Placeholder for hero background image */
+  /* background-image: url('./assets/Spark.jpg'); Placeholder for hero background image */
   background-size: cover; /* Ensure the image covers the entire hero area */
   background-position: center; /* Center the image */
 }
@@ -101,7 +101,7 @@
 /* Footer */
 footer {
   background-color: #023047;
-  color: #ffffff;
+  color: #0c0278;
   text-align: center;
   padding: 0.5rem 0; /* Reduce vertical padding */
   font-size: 0.9rem; /* Reduce font size */

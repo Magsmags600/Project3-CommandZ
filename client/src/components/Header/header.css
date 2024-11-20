@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background: linear-gradient(to right, #f6ff4e, #599eed); /* Gradient from green to blue */
+  background: linear-gradient(to right, #d1a563, #7cc2fa); /* Gradient from green to blue */
   color: #ffffff;
 }
   
@@ -27,7 +27,7 @@
   
   .nav-link {
     font-size: 1.5rem; /* Larger font size for the navigation links */
-    color: #fb8500; /* Link color */
+    color: #0c0278; /* Link color */
     text-decoration: none;
   }
   
