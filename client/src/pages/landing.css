@@ -27,7 +27,8 @@
 /* Styling for card columns */
 .row {
   display: flex;
-  justify-content: space-between; /* Spacing between cards */
+  justify-content: space-between; 
+  align-items: stretch;/* Spacing between cards */
 }
 
 .card {
@@ -37,6 +38,8 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin: 0 10px; /* Balanced space on both sides of each card */
   flex: 1; /* Ensure cards are equally sized */
+  height: 100%;
+  width: 85%;
 }
 
 /* Updated card image styling */

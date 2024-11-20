@@ -39,12 +39,12 @@ const Landing: React.FC = () => {
           <div className="col-md-4">
             <div className="card">
               <div className="card-image-placeholder d-flex justify-content-center align-items-center">
-              <img src="./assets/CareerSparkLogo1.png" alt="Placeholder for Easy to Use" className="img-fluid" />
+              <img src="./assets/gotjob.jpg" alt="Placeholder for Easy to Use" className="img-fluid" />
               </div>
               <div className="card-body">
                 <h5 className="card-title">Quick and Efficient</h5>
                 <p className="card-text">
-                With CareerSpark, you get expertly written content ready to integrate into your favorite resume design.
+                With CareerSpark, you get expertly crafted content to help you land your dream job, seamlessly integrated into your preferred resume design.
                 </p>
               </div>
             </div>
