@@ -13,7 +13,7 @@ const Landing: React.FC = () => {
           <div className="col-md-4">
             <div className="card">
               <div className="card-image-placeholder d-flex justify-content-center align-items-center">
-              <img src="../../assets/AI3.jpg" alt="image of AI" className="img-fluid" />
+              <img src="../assets/AI3.jpg" alt="image of AI" className="img-fluid" />
               </div>
               <div className="card-body">
                 <h5 className="card-title">Easy to Use</h5>
