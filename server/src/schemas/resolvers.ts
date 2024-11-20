@@ -5,6 +5,13 @@ import { signToken, AuthenticationError } from '../utils/auth.js';
 import OpenAI from 'openai';
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 import * as fs from "fs";
+import path from 'node:path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+
+// 👇️ "/home/john/Desktop/javascript"
+const __dirname = path.dirname(__filename);
 
 
 // Initialize OpenAI client with the API key
@@ -192,7 +199,7 @@ const resolvers = {
         const pdfBytes = await pdfDoc.save();
 
         // Save the PDF to a file
-        fs.writeFileSync("output.pdf", pdfBytes);
+        fs.writeFileSync(path.join(__dirname, "../../../client/dist/assets/output.pdf"), pdfBytes);
         console.log("PDF has been created successfully.");
 
 
