@@ -24,8 +24,7 @@ const Landing: React.FC = () => {
               <div className="card-body">
                 <h5 className="card-title">Easy to Use</h5>
                 <p className="card-text">
-                  CareerSpark provides AI-generated content, allowing you to
-                  effortlessly implement it into your preferred resume template.
+                CareerSpark generates AI-powered content, letting you focus on seamlessly styling and presenting it to match your unique vision
                 </p>
               </div>
             </div>
@@ -40,10 +39,11 @@ const Landing: React.FC = () => {
                 />
               </div>
               <div className="card-body">
-                <h5 className="card-title">Professional Results</h5>
+                <h5 className="card-title">Professional Content</h5>
                 <p className="card-text">
-                  Let CareerSpark craft the content you need while you apply it
-                  seamlessly to the resume format of your choice.
+                   With CareerSpark, you get expertly crafted content to help you
+                  land your dream job, seamlessly integrated into your preferred
+                  resume design.
                 </p>
               </div>
             </div>
@@ -58,11 +58,9 @@ const Landing: React.FC = () => {
                 />
               </div>
               <div className="card-body">
-                <h5 className="card-title">Quick and Efficient</h5>
+                <h5 className="card-title">Start Your Journey</h5>
                 <p className="card-text">
-                  With CareerSpark, you get expertly crafted content to help you
-                  land your dream job, seamlessly integrated into your preferred
-                  resume design.
+                We're here to help you begin the journey, empowering you to carry it all the way to the finish line.
                 </p>
               </div>
             </div>
