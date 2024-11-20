@@ -16,7 +16,7 @@ const Header: React.FC = () => {
         {Auth.loggedIn() ? (
           <>
             <Link to="/home" className="nav-link">Home</Link>
-            <Link to="/myresumes" className="nav-link">MyResumes</Link>
+            <Link to="/resumes" className="nav-link">MyResumes</Link>
             <Link to="/" className="nav-link" onClick={Auth.logout}>LogOut</Link>
           </>
         ) : (

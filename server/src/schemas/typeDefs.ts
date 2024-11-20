@@ -58,6 +58,7 @@ const typeDefs = `
   type Query {
     # 1. Get user by ID
     getUserById(_id: ID!): User
+    me:User!
   }
   input ExperienceInput{
     company: String!
