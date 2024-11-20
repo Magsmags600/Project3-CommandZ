@@ -37,7 +37,7 @@ const MyResumes = () => {
       });
       setIsButtonVisible(true);
       alert(response.data.generateResume);
-      navigate("../../dist/assets/output.pdf");
+      navigate("/assets/output.pdf");
       window.location.reload();
     } catch (err) {
       console.error(err);
