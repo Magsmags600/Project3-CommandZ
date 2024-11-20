@@ -157,10 +157,10 @@ const resolvers = {
               Email: ${email}
               Address: ${address}
               phone: ${phone}
-              Education: ${education}
-              Experiences: ${experiences}
-              Projects: ${projects}
-              Skills: ${skills}
+              Education: ${JSON.stringify(education)}
+              Experiences: ${JSON.stringify(experiences)}
+              Projects: ${JSON.stringify(projects)}
+              Skills: ${JSON.stringify(skills)}
               Contacts: ${contacts}
   
               Format the document in a professional manner in accorodance to what they selected for Field, and have it be clear and easy to view for each item.
