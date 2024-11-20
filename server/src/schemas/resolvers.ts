@@ -64,6 +64,8 @@ interface GenerateResume {
   input: {
     name: string;
     email: string;
+    address:string;
+    phone:string;
     education:typeof Education[];
     experiences:typeof Experience[];
     projects: typeof Projects[];
@@ -141,13 +143,15 @@ const resolvers = {
 
     generateResume: async (_parent: any, { input }: GenerateResume) => {
       try { // field is for what area they want ressume to be built in 
-        const { name, email, education, experiences, projects, skills, contacts } = input;
-
+        const { name, email,address,phone, education, experiences, projects, skills, contacts } = input;
+console.log(input);
         const prompt = `
               Create a professional resume for the following individual
   
               Name: ${name}
               Email: ${email}
+              Address: ${address}
+              phone: ${phone}
               Education: ${education}
               Experiences: ${experiences}
               Projects: ${projects}
@@ -197,7 +201,7 @@ const resolvers = {
 
 
 
-            return response;
+            return "Pdf Generated!!! ";
 
 
 
