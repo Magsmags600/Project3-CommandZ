@@ -7,7 +7,7 @@ import ProjectForm from "../components/ProjectComponent";
 import SkillsForm from "../components/SkillsComponent.tsx";
 import ExperienceForm from "../components/ExperienceComponent/index.tsx";
 import SaveResume from "../components/SaveResumeComponent/index.tsx";
-import Auth from "../utils/auth.ts"
+import Auth from "../utils/auth.ts";
 import { ADD_RESUME } from "../utils/mutations.ts";
 import { useMutation } from "@apollo/client";
 import {
@@ -41,7 +41,6 @@ const Home = () => {
     setEducationData([
       ...educationData,
       {
-        
         institution: "",
         degree: "",
         fieldOfStudy: "",
@@ -92,7 +91,6 @@ const Home = () => {
     setProjectData([
       ...projectData,
       {
-       
         title: "",
         description: "",
         startDate: "",
@@ -101,7 +99,6 @@ const Home = () => {
     ]);
   };
   // skills functions
-
 
   const [skillsData, setSkillsData] = useState<SkillsData[]>([]);
 
@@ -118,39 +115,56 @@ const Home = () => {
     setSkillsData([
       ...skillsData,
       {
-       
         skills: "",
       },
     ]);
   };
   // profiledata functions
-  const [profileData, setProfileData] = useState<ProfileData>({} as ProfileData);
+  const [profileData, setProfileData] = useState<ProfileData>(
+    {} as ProfileData
+  );
 
   const handleProfileChange = (field: string, value: any) => {
     setProfileData({ ...profileData, [field]: value });
-    setResumeData({ ...resumeData, name: profileData.name, email: profileData.email, address: profileData.address, phone: profileData.phone })
+    setResumeData({
+      ...resumeData,
+      name: profileData.name,
+      email: profileData.email,
+      address: profileData.address,
+      phone: profileData.phone,
+    });
   };
-  const saveResumeData = async() => {
+  const saveResumeData = async () => {
     console.log(resumeData);
-    try{
+    try {
       await addResume({
-        variables:{...resumeData}
+        variables: { ...resumeData },
       });
       navigate("/home");
-
-    }catch(err){
+    } catch (err) {
       console.error(err);
     }
-
-  }
+  };
 
   const [count, setCount] = useState<number>(0);
-  const cards = ["profile", "education", "experience", "skills", "project", 'SaveResume'];
+  const cards = [
+    "profile",
+    "education",
+    "experience",
+    "skills",
+    "project",
+    "SaveResume",
+  ];
 
   const renderPage = () => {
     switch (cards[count]) {
       case "profile":
-        return <ProfileForm handleProfileChange={handleProfileChange} profileData={profileData} />;
+        return (
+          <ProfileForm
+            handleProfileChange={handleProfileChange}
+            profileData={profileData}
+          />
+        );
       case "education":
         return (
           <EducationForm
@@ -184,9 +198,7 @@ const Home = () => {
           />
         );
       case "SaveResume":
-        return (
-          <SaveResume saveResumeData={saveResumeData} />
-        );
+        return <SaveResume saveResumeData={saveResumeData} />;
       // default:
       //   return <ProfileForm />;
     }
@@ -207,7 +219,6 @@ const Home = () => {
   };
 
   return (
-
     <>
       {Auth.loggedIn() ? (
         <main>
@@ -218,9 +229,11 @@ const Home = () => {
               className="col-6 col-md-10 my-3 float-left "
               style={{ float: "left" }}
             >
-
-              <button data-count={count} className="btn btn-info" onClick={decrement}>
-
+              <button
+                data-count={count}
+                className="btn btn-info"
+                onClick={decrement}
+              >
                 PREVIOUS
               </button>
             </div>
@@ -228,18 +241,19 @@ const Home = () => {
               className="col-6 col-md-10 my-3 float-right"
               style={{ float: "right" }}
             >
-
-
-             
-              <button data-count={count} className="btn btn-success" onClick={increment}>
-
+              <button
+                data-count={count}
+                className="btn btn-success"
+                onClick={increment}
+              >
                 NEXT
               </button>
             </div>
           </div>
         </main>
-      ) : (<div>Not Authorized !! Pls SignUP/Login......</div>)
-      }
+      ) : (
+        <div>Not Authorized !! Pls SignUP/Login......</div>
+      )}
     </>
   );
 };

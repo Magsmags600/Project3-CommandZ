@@ -1,11 +1,11 @@
 import { Schema, Types, Document, ObjectId } from 'mongoose';
 
-interface IProjects extends Document { 
-    projectsId?:ObjectId;
-    title: String,
-    description: String,
-    startDate: String,
-    endDate: String,
+interface IProjects extends Document {
+  projectsId?: ObjectId;
+  title: String,
+  description: String,
+  startDate: String,
+  endDate: String,
 }
 
 const projectsSchema = new Schema<IProjects>(
@@ -24,15 +24,15 @@ const projectsSchema = new Schema<IProjects>(
       // default: Date.now,
     },
     endDate: {
-        type: String,
-        // default: Date.now,
-        
-      },
-      description: {
-        type: String,
-        required: true,
-        maxlength: 25,
-      },
+      type: String,
+      // default: Date.now,
+
+    },
+    description: {
+      type: String,
+      required: true,
+      maxlength: 25,
+    },
   },
   {
     toJSON: {
@@ -42,4 +42,4 @@ const projectsSchema = new Schema<IProjects>(
   }
 );
 
-export default projectsSchema ;
+export default projectsSchema;

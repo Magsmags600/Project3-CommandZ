@@ -2,8 +2,8 @@ import { Schema, Document } from 'mongoose';
 
 
 interface ISkills extends Document {
-    skills: string;
-  }
+  skills: string;
+}
 
 const skillsSchema = new Schema<ISkills>(
   {
@@ -23,4 +23,4 @@ const skillsSchema = new Schema<ISkills>(
   }
 );
 
-export default skillsSchema ;
+export default skillsSchema;

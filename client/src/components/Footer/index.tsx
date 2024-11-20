@@ -1,7 +1,7 @@
 // Footer/index.tsx
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './footer.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./footer.css";
 
 const Footer: React.FC = () => {
   return (
@@ -10,8 +10,12 @@ const Footer: React.FC = () => {
         <p>&copy; {new Date().getFullYear()} CommandZ</p>
       </div>
       <div className="footer-right">
-        <Link to="/legal" className="text-white">Legal</Link>
-        <Link to="/contact" className="text-white">Contact</Link>
+        <Link to="/legal" className="text-white">
+          Legal
+        </Link>
+        <Link to="/contact" className="text-white">
+          Contact
+        </Link>
       </div>
     </footer>
   );

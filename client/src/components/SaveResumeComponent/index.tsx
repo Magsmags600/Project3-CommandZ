@@ -1,16 +1,10 @@
-
-
 // import { ResumeData } from "../../interfaces";
 
 interface ResumeProps {
-
-  saveResumeData: () => void
+  saveResumeData: () => void;
 }
 
-
 const SaveResume = (props: ResumeProps) => {
-
-
   return (
     <div className="profile-form">
       <div className="col-md-6 mb-4">

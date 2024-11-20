@@ -11,6 +11,7 @@ const typeDefs = `
     email: String!
     resume: [Resume!]!
   }
+
   type Experience{
     company: String!
     description: String!
@@ -21,6 +22,7 @@ const typeDefs = `
   type Skills{
     skills:String!
   }
+
   input SkillsInput{
     skills:String!
   }
@@ -60,6 +62,7 @@ const typeDefs = `
     getUserById(_id: ID!): User
     me:User!
   }
+
   input ExperienceInput{
     company: String!
     description: String!
@@ -67,9 +70,7 @@ const typeDefs = `
     endDate: String!
   }
 
-
   input EducationInput {
-    
     institution: String!
     degree: String!
     fieldOfStudy: String!
@@ -78,7 +79,6 @@ const typeDefs = `
   }
 
   input ProjectInput {
-    
     title: String!
     description: String!
     startDate: String!
