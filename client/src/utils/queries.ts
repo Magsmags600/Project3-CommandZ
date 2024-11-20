@@ -1,34 +1,43 @@
 import { gql } from '@apollo/client';
 
-export const GET_USER_BY_ID = gql`
-  query getUserById($id: ID!) {
-    getUserById(_id: $id) {
+export const GET_ME = gql`
+  query me {
+  me {
+    _id
+    username
+    email
+    resume {
       _id
-      username
+      name
       email
-      resume {
-        _id
-        name
-        email
-        education {
-          educationId
-          institution
-          degree
-          fieldOfStudy
-          startDate
-          endDate
-        }
-        experiences
-        projects {
-          projectsId
-          title
-          description
-          startDate
-          endDate
-        }
-        skills
-        contacts
+      address
+      phone
+      education {
+        educationId
+        institution
+        degree
+        fieldOfStudy
+        startDate
+        endDate
       }
+      experiences {
+        company
+        description
+        startDate
+        endDate
+      }
+      projects {
+        projectsId
+        title
+        description
+        startDate
+        endDate
+      }
+      skills {
+        skills
+      }
+      contacts
     }
+  }
   }
 `;
