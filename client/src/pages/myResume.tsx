@@ -34,6 +34,7 @@ const MyResumes = () => {
       });
       setIsButtonVisible(true);
       alert(response.data.generateResume);
+      window.location.href = "https://project3-commandz.onrender.com/dist/assets/output.pdf";
     } catch (err) {
       console.error(err);
     }
