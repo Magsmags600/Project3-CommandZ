@@ -136,7 +136,7 @@ const Home = () => {
       await addResume({
         variables:{...resumeData}
       });
-      navigate("/home");
+      navigate("/");
 
     }catch(err){
       console.error(err);

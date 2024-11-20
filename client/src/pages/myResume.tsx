@@ -66,7 +66,7 @@ const MyResumes = () => {
 
 
 
-                                    }) : "loading...."}
+                                    }) : "No Resume To Show...."}
                                 </>
 
                             </div>
