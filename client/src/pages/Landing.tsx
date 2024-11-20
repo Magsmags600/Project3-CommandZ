@@ -24,7 +24,7 @@ const Landing: React.FC = () => {
               <div className="card-body">
                 <h5 className="card-title">Easy to Use</h5>
                 <p className="card-text">
-                CareerSpark generates AI-powered content, letting you focus on seamlessly styling and presenting it to match your unique vision
+                CareerSpark generates AI-powered content, letting you focus on seamlessly styling and presenting it to match your unique vision.
                 </p>
               </div>
             </div>
@@ -41,7 +41,7 @@ const Landing: React.FC = () => {
               <div className="card-body">
                 <h5 className="card-title">Professional Content</h5>
                 <p className="card-text">
-                   With CareerSpark, you get expertly crafted content to help you
+                  With CareerSpark, you get expertly crafted content to help you
                   land your dream job, seamlessly integrated into your preferred
                   resume design.
                 </p>
