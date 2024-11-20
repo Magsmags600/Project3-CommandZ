@@ -91,10 +91,10 @@ Have a high-quality README (with unique name, description, technologies used, sc
 -------------------------------------------------------
 
 ## Testing
-- 🧪The testing method is going to be utalizing the Cypress program.
+- 🧪The testing method is going to be utilizing the Cypress program.
 
 ## ADD SECTION 
-- DEPLOYED URL:
+- DEPLOYED URL: https://project3-commandz.onrender.com
 - GITHUB URL: https://github.com/Magsmags600/Project3-CommandZ
 - SCREEN SHOTS: 
 - ![alt text](./server/assets/Screenshot%202024-11-19%20130626.png)
