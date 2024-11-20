@@ -50,6 +50,7 @@ const Home = () => {
       },
     ]);
   };
+
   // experience functions
   const [experienceData, setExperienceData] = useState<ExperienceData[]>([]);
 
@@ -58,7 +59,7 @@ const Home = () => {
     const updatedExperience = [...experienceData];
     updatedExperience[index] = { ...updatedExperience[index], [field]: value };
     setExperienceData(updatedExperience);
-    const updatedresumeData = { ...resumeData, experience: updatedExperience };
+    const updatedresumeData = { ...resumeData, experiences: updatedExperience };
     console.log(updatedresumeData);
     setResumeData(updatedresumeData);
   };
@@ -91,7 +92,7 @@ const Home = () => {
     setProjectData([
       ...projectData,
       {
-        projectsId: Date.now().toString(),
+       
         title: "",
         description: "",
         startDate: "",

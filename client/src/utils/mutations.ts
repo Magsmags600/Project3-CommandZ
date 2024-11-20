@@ -26,15 +26,19 @@ export const ADD_RESUME = gql`
   mutation addResume(
     $name: String!
     $email: String!
+    $phone:String!
+    $address:String!
     $education: [EducationInput!]!
     $experiences: [ExperienceInput!]!
     $projects: [ProjectInput!]!
     $skills: [SkillsInput!]!
-    $contacts: [String!]!
+    $contacts: [String]
   ) {
     addResume(
       name: $name
       email: $email
+      address:$address
+      phone:$phone
       education: $education
       experiences: $experiences
       projects: $projects
@@ -52,7 +56,7 @@ export const ADD_RESUME = gql`
         startDate
         endDate
       }
-      experiences
+    
       projects {
         projectsId
         title
@@ -60,8 +64,7 @@ export const ADD_RESUME = gql`
         startDate
         endDate
       }
-      skills
-      contacts
+   
     }
   }
 `;
