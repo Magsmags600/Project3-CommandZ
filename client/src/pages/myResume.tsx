@@ -1,18 +1,21 @@
 import './landing.css';
 import { useState, useEffect } from 'react';
-import { useQuery } from '@apollo/client';
+import { useQuery ,useMutation} from '@apollo/client';
 import { GET_ME } from '../utils/queries';
-import type { User } from '../interfaces';
+import {GENERATE_RESUME} from "../utils/mutations";
+// import type { User } from '../interfaces';
 
 const MyResumes = () => {
-    const [userData, setUserData] = useState<User>({
-        username: '',
-        email: '',
-        password: '',
-        resume: [],
+    const [userData, setUserData] = useState<any>({
+ 
+        resume: []
     });
+    const [isButtonVisible, setIsButtonVisible] = useState(true);
+
+
 
     const { loading, data } = useQuery(GET_ME);
+    const [generateResume] = useMutation(GENERATE_RESUME)
     // console.log(data?.me?.resume);
 
     const getUserData = () => {
@@ -21,9 +24,29 @@ const MyResumes = () => {
     }
     useEffect(() => {
         getUserData();
-        console.log(userData);
-    },);
+        console.log(userData?.resume);
+    });
 
+
+  const resumeGenerator = async(e:any,index:number)=>{
+    e.preventDefault();
+    e.stopPropagation();
+    setIsButtonVisible(false); 
+    
+    try {
+        const response =  await generateResume({
+            variables: {input: {...userData.resume[index]} },
+        });
+        setIsButtonVisible(true); 
+        alert(response.data.generateResume);
+
+  } catch (err) {
+    console.error(err);
+  }
+
+    
+
+  }
 
 
 
@@ -41,7 +64,7 @@ const MyResumes = () => {
                             <div className="row justify-content-center">
 
                                 <> {userData?.resume?.length > 0
-                                    ? userData?.resume?.map((resume: any) => {
+                                    ? userData?.resume?.map((resume: any,index:number) => {
 
                                         return (
                                             <div className="col-md-4">
@@ -56,17 +79,13 @@ const MyResumes = () => {
                                                             {resume.email}<br/>
                                                             {resume.phone}<br/>
                                                         </p>
+                                                        {isButtonVisible?<button key={index} className='btn btn-success' onClick={(e)=>resumeGenerator(e,index)}>create Pdf</button>:''}
                                                     </div>
                                                 </div>
                                             </div>)
 
-
-
-
-
-
-
                                     }) : "No Resume To Show...."}
+                                    
                                 </>
 
                             </div>

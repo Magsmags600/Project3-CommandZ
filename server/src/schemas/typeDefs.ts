@@ -121,7 +121,7 @@ const typeDefs = `
     ): User!
     
     deleteResume(_id: ID!): Resume!
-    generateResume(input: GenerateResumeInput!):String!
+    generateResume(input: GenerateResumeInput!):String
   }
 
 `;

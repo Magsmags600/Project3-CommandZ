@@ -7,13 +7,11 @@ export const GET_ME = gql`
     username
     email
     resume {
-      _id
       name
       email
       address
       phone
       education {
-        educationId
         institution
         degree
         fieldOfStudy
@@ -27,7 +25,6 @@ export const GET_ME = gql`
         endDate
       }
       projects {
-        projectsId
         title
         description
         startDate
