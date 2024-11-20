@@ -1,4 +1,5 @@
 // import { useQuery } from '@apollo/client';
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ProfileForm from "../components/ProfileForm";
 import EducationForm from "../components/EducationComponent";
@@ -7,8 +8,8 @@ import SkillsForm from "../components/SkillsComponent.tsx";
 import ExperienceForm from "../components/ExperienceComponent/index.tsx";
 import SaveResume from "../components/SaveResumeComponent/index.tsx";
 import Auth from "../utils/auth.ts"
-// import { ADD_RESUME } from "../utils/mutations.ts";
-// import { useMutation } from "@apollo/client";
+import { ADD_RESUME } from "../utils/mutations.ts";
+import { useMutation } from "@apollo/client";
 import {
   ResumeData,
   EducationData,
@@ -19,9 +20,10 @@ import {
 } from "../interfaces";
 
 const Home = () => {
+  const navigate = useNavigate();
   // const { loading, data } = useQuery(QUERY_PROFILES);
   // const profiles = data?.profiles || [];
-  // const [addResume] = useMutation(ADD_RESUME);
+  const [addResume] = useMutation(ADD_RESUME);
   const [resumeData, setResumeData] = useState({} as ResumeData);
   const [educationData, setEducationData] = useState<EducationData[]>([]);
   // education functions
@@ -39,7 +41,7 @@ const Home = () => {
     setEducationData([
       ...educationData,
       {
-        educationId: Date.now().toString(),
+        
         institution: "",
         degree: "",
         fieldOfStudy: "",
@@ -115,7 +117,7 @@ const Home = () => {
     setSkillsData([
       ...skillsData,
       {
-        skillsId: Date.now().toString(),
+       
         skills: "",
       },
     ]);
@@ -127,15 +129,17 @@ const Home = () => {
     setProfileData({ ...profileData, [field]: value });
     setResumeData({ ...resumeData, name: profileData.name, email: profileData.email, address: profileData.address, phone: profileData.phone })
   };
-  const saveResumeData = () => {
+  const saveResumeData = async() => {
     console.log(resumeData);
-    // try{
-    //   await addResume({
-    //     variables:{...resumeData}
-    //   })
-    // }catch(err){
-    //   console.error(err);
-    // }
+    try{
+      await addResume({
+        variables:{...resumeData}
+      });
+      navigate("/home");
+
+    }catch(err){
+      console.error(err);
+    }
 
   }
 

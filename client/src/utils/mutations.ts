@@ -27,9 +27,9 @@ export const ADD_RESUME = gql`
     $name: String!
     $email: String!
     $education: [EducationInput!]!
-    $experiences: [String!]!
+    $experiences: [ExperienceInput!]!
     $projects: [ProjectInput!]!
-    $skills: [String!]!
+    $skills: [SkillsInput!]!
     $contacts: [String!]!
   ) {
     addResume(

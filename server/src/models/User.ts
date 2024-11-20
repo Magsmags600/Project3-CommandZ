@@ -1,19 +1,23 @@
+import { Experience ,Projects,Education,Skills} from './index.js';
 import { Schema, model, Document} from 'mongoose';
 import bcrypt from 'bcrypt';
-import Education from './Education.js';
-import Projects from './Projects.js';
+// import Education from './Education.js';
+// import Projects from './Projects.js';
 //interface for the Resume document
 interface IResume extends Document {
   _id: string;
   name: string;
   email: string;
+  address:string;
+  phone:string;
   education: typeof Education[];
-  experiences: string[];
+  experiences: typeof Experience[];
   projects: typeof Projects[];
-  skills: string[];
+  skills: typeof Skills[];
   contacts: string[];
 
 }
+
 
 // Define an interface for the User document
 interface IUser extends Document {
@@ -34,6 +38,16 @@ const resumeSchema = new Schema<IResume>(
       unique: true,
       trim: true,
     },
+    address: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     email: {
       type: String,
       required: true,
@@ -41,12 +55,6 @@ const resumeSchema = new Schema<IResume>(
       match: [/.+@.+\..+/, 'Must match an email address!'],
     },
 
-    skills: [
-      {
-        type: String,
-        trim: true,
-      },
-    ],
     education: [Education],
     projects: [Projects],
     contacts: [
@@ -55,12 +63,8 @@ const resumeSchema = new Schema<IResume>(
         trim: true,
       }
     ],
-    experiences: [
-      {
-        type: String,
-        trim: true,
-      },
-    ],
+    experiences: [Experience],
+    skills: [Skills],
   },
   {
     timestamps: true,
@@ -110,7 +114,7 @@ const hashPassword = async function (this: any, next: any) {
   next();
 };
 
-resumeSchema.pre<IResume>('save', hashPassword);
+// resumeSchema.pre<IResume>('save', hashPassword);
 userSchema.pre<IUser>('save', hashPassword);
 
 // Method to compare passwords for both schemas
