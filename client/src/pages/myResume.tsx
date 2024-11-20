@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_ME } from "../utils/queries";
 import { GENERATE_RESUME } from "../utils/mutations";
-import { useNavigate } from "react-router-dom";
+
 // import type { User } from '../interfaces';
 
 const MyResumes = () => {
 
-  const navigate = useNavigate();
+  
   const [userData, setUserData] = useState<any>({
     resume: [],
   });
@@ -37,8 +37,8 @@ const MyResumes = () => {
       });
       setIsButtonVisible(true);
       alert(response.data.generateResume);
-      navigate("/assets/output.pdf");
-      window.location.reload();
+      
+      window.location.assign("/assets/output.pdf");
     } catch (err) {
       console.error(err);
     }
