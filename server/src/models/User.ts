@@ -1,5 +1,5 @@
-import { Experience ,Projects,Education,Skills} from './index.js';
-import { Schema, model, Document} from 'mongoose';
+import { Experience, Projects, Education, Skills } from './index.js';
+import { Schema, model, Document } from 'mongoose';
 import bcrypt from 'bcrypt';
 // import Education from './Education.js';
 // import Projects from './Projects.js';
@@ -8,8 +8,8 @@ interface IResume extends Document {
   _id: string;
   name: string;
   email: string;
-  address:string;
-  phone:string;
+  address: string;
+  phone: string;
   education: typeof Education[];
   experiences: typeof Experience[];
   projects: typeof Projects[];
@@ -93,7 +93,7 @@ const userSchema = new Schema<IUser>(
       required: true,
       minlength: 5,
     },
-    resume:[{
+    resume: [{
       type: Schema.Types.ObjectId,
       ref: 'Resume',
     }],

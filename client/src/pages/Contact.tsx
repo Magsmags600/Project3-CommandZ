@@ -1,28 +1,32 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Your message has been submitted!');
+    alert("Your message has been submitted!");
   };
 
   return (
-    <main style={{ maxWidth: '600px', margin: '0 auto', padding: '2rem 0' }}>
-      <h1 style={{ color: '#1a1a1a', marginBottom: '1.5rem' }}>Contact Us</h1>
+    <main style={{ maxWidth: "600px", margin: "0 auto", padding: "2rem 0" }}>
+      <h1 style={{ color: "#1a1a1a", marginBottom: "1.5rem" }}>Contact Us</h1>
       <form onSubmit={handleSubmit} style={formStyles}>
         <div style={fieldStyles}>
-          <label htmlFor="name" style={labelStyles}>Name</label>
+          <label htmlFor="name" style={labelStyles}>
+            Name
+          </label>
           <input
             type="text"
             id="name"
@@ -34,7 +38,9 @@ const Contact: React.FC = () => {
           />
         </div>
         <div style={fieldStyles}>
-          <label htmlFor="email" style={labelStyles}>Email</label>
+          <label htmlFor="email" style={labelStyles}>
+            Email
+          </label>
           <input
             type="email"
             id="email"
@@ -46,7 +52,9 @@ const Contact: React.FC = () => {
           />
         </div>
         <div style={fieldStyles}>
-          <label htmlFor="message" style={labelStyles}>Message</label>
+          <label htmlFor="message" style={labelStyles}>
+            Message
+          </label>
           <textarea
             id="message"
             name="message"
@@ -57,55 +65,57 @@ const Contact: React.FC = () => {
             required
           />
         </div>
-        <button type="submit" style={buttonStyles}>Submit</button>
+        <button type="submit" style={buttonStyles}>
+          Submit
+        </button>
       </form>
     </main>
   );
 };
 
 const formStyles = {
-  display: 'flex',
-  flexDirection: 'column' as 'column',
-  gap: '1.5rem',
-  padding: '1rem',
-  backgroundColor: '#f9f9f9',
-  borderRadius: '8px',
-  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  display: "flex",
+  flexDirection: "column" as "column",
+  gap: "1.5rem",
+  padding: "1rem",
+  backgroundColor: "#f9f9f9",
+  borderRadius: "8px",
+  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
 };
 
 const fieldStyles = {
-  display: 'flex',
-  flexDirection: 'column' as 'column',
+  display: "flex",
+  flexDirection: "column" as "column",
 };
 
 const labelStyles = {
-  marginBottom: '0.5rem',
-  fontSize: '1rem',
-  color: '#333',
+  marginBottom: "0.5rem",
+  fontSize: "1rem",
+  color: "#333",
 };
 
 const inputStyles = {
-  padding: '0.5rem',
-  fontSize: '1rem',
-  borderRadius: '4px',
-  border: '1px solid #ddd',
+  padding: "0.5rem",
+  fontSize: "1rem",
+  borderRadius: "4px",
+  border: "1px solid #ddd",
 };
 
 const textareaStyles = {
-  padding: '0.5rem',
-  fontSize: '1rem',
-  borderRadius: '4px',
-  border: '1px solid #ddd',
+  padding: "0.5rem",
+  fontSize: "1rem",
+  borderRadius: "4px",
+  border: "1px solid #ddd",
 };
 
 const buttonStyles = {
-  padding: '0.75rem',
-  fontSize: '1rem',
-  color: '#fff',
-  backgroundColor: '#1bbc9b',
-  border: 'none',
-  borderRadius: '4px',
-  cursor: 'pointer',
+  padding: "0.75rem",
+  fontSize: "1rem",
+  color: "#fff",
+  backgroundColor: "#1bbc9b",
+  border: "none",
+  borderRadius: "4px",
+  cursor: "pointer",
 };
 
 export default Contact;

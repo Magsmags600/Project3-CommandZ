@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
-import { User, Resume, Education, Projects,Experience ,Skills} from '../models/index.js';
-import { signToken, AuthenticationError} from '../utils/auth.js';
+import { User, Resume, Education, Projects, Experience, Skills } from '../models/index.js';
+import { signToken, AuthenticationError } from '../utils/auth.js';
 import OpenAI from 'openai';
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 import * as fs from "fs";
@@ -11,8 +11,6 @@ import * as fs from "fs";
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,  // Use your OpenAI API key here
 });
-
-
 
 interface User {
   _id: string;
@@ -25,8 +23,8 @@ interface Resume {
   _id: string;
   name: string;
   email: string;
-  address:string;
-  phone:string;
+  address: string;
+  phone: string;
   education: typeof Education[];
   experiences: typeof Experience[];
   projects: typeof Projects[];
@@ -43,10 +41,10 @@ interface AddUserArgs {
 interface AddResumeArgs {
   name: string;
   email: string;
-  address:string;
-  phone:string;
-  education:typeof Education[];
-  experiences:typeof Experience[];
+  address: string;
+  phone: string;
+  education: typeof Education[];
+  experiences: typeof Experience[];
   projects: typeof Projects[];
   skills: typeof Skills[];
   contacts: string[];
@@ -64,10 +62,10 @@ interface GenerateResume {
   input: {
     name: string;
     email: string;
-    address:string;
-    phone:string;
-    education:typeof Education[];
-    experiences:typeof Experience[];
+    address: string;
+    phone: string;
+    education: typeof Education[];
+    experiences: typeof Experience[];
     projects: typeof Projects[];
     skills: typeof Skills[];
     contacts: string[];
@@ -93,7 +91,7 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (_: unknown, { username, email, password }: AddUserArgs): Promise< User> => {
+    addUser: async (_: unknown, { username, email, password }: AddUserArgs): Promise<User> => {
       const newUser = await User.create({ username, email, password });
       return newUser;
     },
@@ -114,16 +112,16 @@ const resolvers = {
       return { token, profile: user };
     },
 
-    addResume: async (_: unknown, { name, email,address,phone, education, experiences, projects, skills, contacts }: AddResumeArgs,context:any): Promise<Resume> => {
+    addResume: async (_: unknown, { name, email, address, phone, education, experiences, projects, skills, contacts }: AddResumeArgs, context: any): Promise<Resume> => {
       if (context.user) {
-       
-        const resume = await Resume.create({ name, email,address,phone, education, experiences, projects, skills, contacts });
+
+        const resume = await Resume.create({ name, email, address, phone, education, experiences, projects, skills, contacts });
 
         //  const user =
-          await User.findOneAndUpdate(
+        await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { resume: resume._id } },
-          {new:true}
+          { new: true }
         );
 
         return resume;
@@ -143,8 +141,8 @@ const resolvers = {
 
     generateResume: async (_parent: any, { input }: GenerateResume) => {
       try { // field is for what area they want ressume to be built in 
-        const { name, email,address,phone, education, experiences, projects, skills, contacts } = input;
-console.log(input);
+        const { name, email, address, phone, education, experiences, projects, skills, contacts } = input;
+        console.log(input);
         const prompt = `
               Create a professional resume for the following individual
   
@@ -196,22 +194,22 @@ console.log(input);
         // Save the PDF to a file
         fs.writeFileSync("output.pdf", pdfBytes);
         console.log("PDF has been created successfully.");
-      
 
 
 
 
-            return "Pdf Generated!!! ";
+
+        return "Pdf Generated!!! ";
 
 
 
 
-    } catch(error) {
-      console.error(error);
-      return error
-    }
+      } catch (error) {
+        console.error(error);
+        return error
+      }
+    },
   },
-},
 };
 
 export default resolvers;

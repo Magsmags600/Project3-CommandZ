@@ -1,12 +1,12 @@
 import { Schema, Types, Document, ObjectId } from 'mongoose';
 
-interface IEducation extends Document { 
-    educationId?: ObjectId;
-    institution: string;
-    degree: string;
-    fieldOfStudy: string;
-    startDate: string;
-    endDate: string;
+interface IEducation extends Document {
+  educationId?: ObjectId;
+  institution: string;
+  degree: string;
+  fieldOfStudy: string;
+  startDate: string;
+  endDate: string;
 }
 
 const educationSchema = new Schema<IEducation>(
@@ -25,20 +25,20 @@ const educationSchema = new Schema<IEducation>(
       // default: Date.now,
     },
     endDate: {
-        type: String,
-        // default: Date.now,
-        
-      },
+      type: String,
+      // default: Date.now,
+
+    },
     degree: {
-        type: String,
-        required: true,
-        maxlength: 25,
-      },
+      type: String,
+      required: true,
+      maxlength: 25,
+    },
     fieldOfStudy: {
-        type: String,
-        required: true,
-        maxlength: 25,
-      },
+      type: String,
+      required: true,
+      maxlength: 25,
+    },
   },
   {
     toJSON: {
@@ -48,4 +48,4 @@ const educationSchema = new Schema<IEducation>(
   }
 );
 
-export default educationSchema ;
+export default educationSchema;

@@ -2,11 +2,11 @@ import { Schema, Document } from 'mongoose';
 
 
 interface IExperience extends Document {
-    company: string;
-    description: string;
-    startDate: string;
-    endDate: string;
-  }
+  company: string;
+  description: string;
+  startDate: string;
+  endDate: string;
+}
 
 const experienceSchema = new Schema<IExperience>(
   {
@@ -22,14 +22,14 @@ const experienceSchema = new Schema<IExperience>(
       // default: Date.now,
     },
     startDate: {
-        type: String,
-        // default: Date.now,
-      },
+      type: String,
+      // default: Date.now,
+    },
     endDate: {
-        type: String,
-        // default: Date.now,
-        
-      },
+      type: String,
+      // default: Date.now,
+
+    },
 
   },
   {
@@ -40,4 +40,4 @@ const experienceSchema = new Schema<IExperience>(
   }
 );
 
-export default experienceSchema ;
+export default experienceSchema;
